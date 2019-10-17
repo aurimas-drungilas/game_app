@@ -1,7 +1,7 @@
 use game;
 db.dropDatabase();
 
-db.uno.insertMany([
+db.play.insertMany([
   {
     name: "Test",
     bool: true

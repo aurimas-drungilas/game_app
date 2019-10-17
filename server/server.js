@@ -16,9 +16,9 @@ MongoClient.connect(
 )
 .then((client) => {
   const db = client.db('game');
-  const unoCollection = db.collection('uno');
+  const unoCollection = db.collection('play');
   const unoRouter = createRouter(unoCollection);
-  app.use('/api/uno', unoRouter);
+  app.use('/api/play', unoRouter);
 })
 .catch(console.err);
 
