@@ -20,12 +20,3 @@
 1. `cd client` go to the client directory.
 2. `sudo npm install` to install all of the required npm packages.  
 3. `sudo npm serve` to run the client server.
-
-
-## Resources
-
-Gelic numbers:
-https://www.languagesandnumbers.com/how-to-count-in-scottish-gaelic/en/gla/
-
-Gaelic fonts:
-https://www.fontspace.com/category/gaelic
