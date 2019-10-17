@@ -2,8 +2,8 @@
 
 ## Resources
 
-celtic font
+Gelic numbers:
 https://www.languagesandnumbers.com/how-to-count-in-scottish-gaelic/en/gla/
 
-celtic designs
+Gaelic fonts:
 https://www.fontspace.com/category/gaelic
