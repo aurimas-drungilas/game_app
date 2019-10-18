@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <PlayerCards></PlayerCards>
+    <PlayerCards v-bind:cards="cards"></PlayerCards>
   </div>
 </template>
 
@@ -9,9 +9,10 @@ import {eventBus} from '@/main.js';
 import PlayerCards from '@/components/play/PlayerCards.vue';
 
 export default {
+  props: ['cards'],
   components: {
     PlayerCards
-  }
+  },
 }
 </script>
 

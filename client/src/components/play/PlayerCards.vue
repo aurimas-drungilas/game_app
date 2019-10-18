@@ -1,8 +1,6 @@
 <template lang="html">
   <div>
-    <PlayerCard></PlayerCard>
-    <PlayerCard></PlayerCard>
-    <PlayerCard></PlayerCard>
+    <PlayerCard v-for="card in cards" v-bind:card="card"></PlayerCard>
   </div>
 </template>
 
@@ -13,14 +11,9 @@ import PlayerCard from '@/components/play/PlayerCard.vue';
 export default {
   data(){
     return {
-      cards: [
-        {colour: 'green', number: 5},
-        {colour: 'green', number: 5},
-        {colour: 'green', number: 5},
-        {colour: 'green', number: 5}
-      ]
     }
   },
+  props: ['cards'],
   components: {
     PlayerCard
   },
@@ -28,7 +21,7 @@ export default {
     handleCardPick() {
       eventBus.$emit('player-card-picked', {colour: 'blue', number: 3});
     }
-  }
+  },
 }
 </script>
 

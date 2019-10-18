@@ -1,13 +1,23 @@
 <template lang="html">
-  <p>Player Card</p>
+  <div>
+    <!-- Player Card {{card}} -->
+    <img :src="card.front_url">
+  </div>
 </template>
 
 <script>
 import {eventBus} from '@/main.js';
 
 export default {
+  props: ['card'],
 }
 </script>
 
 <style lang="css" scoped>
+div {
+  display: inline-block;
+}
+img {
+  width: 100px;
+}
 </style>
