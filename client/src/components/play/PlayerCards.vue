@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import {eventBus} from '@/main.js';
 import PlayerCard from '@/components/play/PlayerCard.vue';
 
 export default {

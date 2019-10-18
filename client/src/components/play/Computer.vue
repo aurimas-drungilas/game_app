@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import {eventBus} from '@/main.js';
 import DrawPile from '@/components/play/DrawPile.vue';
 import DiscardPile from '@/components/play/DiscardPile.vue';
 import AonButton from '@/components/play/AonButton.vue';

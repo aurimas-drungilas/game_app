@@ -7,13 +7,11 @@
 </template>
 
 <script>
-// '@' allows to use root path of the 'src' folder.
+import {eventBus} from '@/main.js';
 import AIPlayer from '@/components/play/AIPlayer.vue';
 import Computer from '@/components/play/Computer.vue';
 import Player from '@/components/play/Player.vue';
-// import PlayService from '@/services/PlayService.js'
 import Game from '@/helpers/Game.js'
-import {eventBus} from '@/main.js';
 
 export default {
   components: {

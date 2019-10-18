@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import {eventBus} from '@/main.js';
 import AICards from '@/components/play/AICards.vue';
 
 export default {
