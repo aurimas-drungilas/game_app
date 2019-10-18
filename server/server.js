@@ -21,10 +21,6 @@ MongoClient.connect(
   const cardsCollection = db.collection('Cards');
   const cardsRouter = createRouter(cardsCollection);
   app.use('/api/cards', cardsRouter);
-
-  const cardsMiscCollection = db.collection('CardsMisc');
-  const cardsMiscRouter = createRouter(cardsMiscCollection);
-  app.use('/api/cards-misc', cardsMiscRouter);
 })
 .catch(console.err);
 
