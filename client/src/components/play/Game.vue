@@ -12,11 +12,14 @@ import CardsService from '@/services/CardsService.js';
 import AIPlayer from '@/components/play/AIPlayer.vue';
 import Computer from '@/components/play/Computer.vue';
 import Player from '@/components/play/Player.vue';
-import Game from '@/helpers/Game.js'
+import GameHelper from '@/helpers/Game.js'
 
 export default {
   data() {
     return {
+      setup: {
+        startingCards: 6,
+      },
       cards: [],
       player: {
         cards: [],
@@ -43,10 +46,10 @@ export default {
   },
   methods: {
     init() { // Run only once when the game starts.
-      this.assignPlayerCards(this.cards);
-      this.assignAIPlayerCards(this.cards);
-      this.assignDrawPileCards(this.cards);
-      this.assignDiscardPileCards([this.cards[0]]);
+      // Shuffle the cards
+      this.cards = GameHelper.shuffleCards(this.cards);
+      // Allocate the cards
+      this.allocateCards(this.cards);
     },
     update() { // Run after any action is performed.
 
@@ -62,6 +65,25 @@ export default {
     },
     assignDiscardPileCards(cards) {
       this.discard_pile = cards;
+    },
+    allocateCards(cards) {
+      let playerCards = [];
+      let aiCards = [];
+      let drawPile = [];
+      let discardPile = [];
+      let length = cards.length;
+
+      // Split the cards around
+      playerCards = cards.splice(0, this.setup.startingCards);
+      aiCards = cards.splice(0, this.setup.startingCards);
+      discardPile = cards.splice(0, 1);
+      drawPile = cards;
+
+      // Assign appropriate cards to appropriate entities
+      this.assignPlayerCards(playerCards);
+      this.assignAIPlayerCards(aiCards);
+      this.assignDrawPileCards(drawPile);
+      this.assignDiscardPileCards(discardPile);
     },
     playerCardClickedEvent(card) {
       // Allowed action?
