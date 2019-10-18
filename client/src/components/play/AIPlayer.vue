@@ -1,5 +1,8 @@
 <template lang="html">
-  <AICards v-bind:cards="cards"></AICards>
+  <div>
+    <p>AI cards</p>
+    <AICards v-bind:cards="cards"></AICards>
+  </div>
 </template>
 
 <script>

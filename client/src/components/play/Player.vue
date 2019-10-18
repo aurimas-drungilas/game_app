@@ -1,5 +1,6 @@
 <template lang="html">
   <div>
+    <p>Player cards</p>
     <PlayerCards v-bind:cards="cards"></PlayerCards>
   </div>
 </template>
