@@ -17,9 +17,7 @@ import Game from '@/helpers/Game.js'
 export default {
   data() {
     return {
-      plays: [],
       cards: [],
-      cardsMisc: [],
       player: {
         cards: [],
       },
@@ -32,9 +30,9 @@ export default {
   },
   mounted() {
     // Set up the event buses
-    eventBus.$on('player-card-clicked', data => console.log(data));
+    eventBus.$on('player-card-clicked', data => this.playerCardClickedEvent(data));
     eventBus.$on('ai-card-picked', data => console.log(data));
-    eventBus.$on('draw-pile-clicked', data => console.log(data));
+    eventBus.$on('draw-pile-clicked', data => this.drawPileClickedEvent(data));
     eventBus.$on('aon-button-clicked', data => console.log(data));
 
     // Get all the cards and init the game.
@@ -64,6 +62,20 @@ export default {
     },
     assignDiscardPileCards(cards) {
       this.discard_pile = cards;
+    },
+    playerCardClickedEvent(card) {
+      // Allowed action?
+      // Card matches the pile colour?
+      // Do the action.
+      this.discard_pile.push(card);
+      // Remove from the player's cards.
+    },
+    drawPileClickedEvent(card) {
+      // Allowed action?
+      // Do the action.
+      this.player.cards.push(card);
+      // Remove from the draw pile.
+      // this.draw_pile.pop();
     },
   },
   components: {

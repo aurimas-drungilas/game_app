@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <AICard v-for="card in cards" v-bind:card="card" v-bind:key="card.id"></AICard>
+    <AICard v-for="card in cards" v-bind:card="card" v-bind:key="card._id"></AICard>
   </div>
 </template>
 
