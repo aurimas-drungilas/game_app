@@ -1,14 +1,14 @@
 <template lang="html">
-  <NumberOne></NumberOne>
+  <individual-number/>
 </template>
 
 <script>
-import NumberOne from '@/components/quiz/NumberOne.vue'
+import IndividualNumber from '@/components/quiz/IndividualNumber.vue'
 
 export default {
   name: 'numbers-test',
   components: {
-    NumberOne
+    'individual-number': IndividualNumber
   }
 }
 </script>

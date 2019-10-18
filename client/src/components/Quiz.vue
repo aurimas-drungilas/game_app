@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <h2>Test Your Gaelic numbers!</h2>
+    <h2>Test Your Gaelic numbers</h2>
     <numbers-cloud/>
     <numbers-test/>
   </div>
