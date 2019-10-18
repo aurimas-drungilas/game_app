@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p v-for="number in numbers" :numbers="numbers">{{number}}</p>
+    <p v-for="number in numbers">{{number}}</p>
   </div>
 </template>
 
@@ -17,8 +17,10 @@ export default {
   },
   methods: {
     doRandomisation(array) {
-      array.sort(() => Math.random() - 0.5);
-      return array;
+      for (this.element in array) {
+        array.sort(() => Math.random() - 0.5);
+        return array;
+      }
     }
   }
 }
