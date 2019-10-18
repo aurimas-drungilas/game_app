@@ -1,8 +1,8 @@
 <template lang="html">
   <div>
     <AIPlayer v-bind:cards="ai_player.cards"></AIPlayer>
-    <Computer></Computer>
-    <Player v-bind:cards="player.cards"></Player>
+    <Computer v-bind:draw_pile="draw_pile" v-bind:discard_pile="discard_pile"></Computer>
+    <Player v-bind:cards="player.cards" ></Player>
   </div>
 </template>
 
@@ -26,6 +26,8 @@ export default {
       ai_player: {
         cards: ['ai1', 'ai2', 'ai3'],
       },
+      draw_pile: [],
+      discard_pile: [],
     }
   },
   mounted() {
@@ -41,6 +43,8 @@ export default {
     init() { // Run only once when the game starts.
       this.assignPlayerCards(this.cards);
       this.assignAIPlayerCards(this.cards);
+      this.assignDrawPileCards(this.cards);
+      this.assignDiscardPileCards([this.cards[0]]);
     },
     update() { // Run after any action is performed.
 
@@ -50,7 +54,13 @@ export default {
     },
     assignAIPlayerCards(cards) {
       this.ai_player.cards = cards;
-    }
+    },
+    assignDrawPileCards(cards) {
+      this.draw_pile = cards;
+    },
+    assignDiscardPileCards(cards) {
+      this.discard_pile = cards;
+    },
   },
   components: {
     AIPlayer, Computer, Player

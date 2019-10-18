@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
-    <DrawPile></DrawPile>
-    <DiscardPile></DiscardPile>
+    <DrawPile v-bind:cards="draw_pile" v-if="draw_pile.length"></DrawPile>
+    <DiscardPile v-bind:cards="discard_pile" v-if="discard_pile.length"></DiscardPile>
     <AonButton></AonButton>
   </div>
 </template>
@@ -15,9 +15,13 @@ import AonButton from '@/components/play/AonButton.vue';
 export default {
   components: {
     DrawPile, DiscardPile, AonButton
-  }
+  },
+  props: ['draw_pile', 'discard_pile']
 }
 </script>
 
 <style lang="css" scoped>
+div * {
+  display: inline-block;
+}
 </style>
