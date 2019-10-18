@@ -1,5 +1,5 @@
 <template lang="html">
-  <p>AonButton</p>
+  <button type="button">AON!</button>
 </template>
 
 <script>
