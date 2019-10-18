@@ -1,16 +1,13 @@
 <template lang="html">
-  <div>
-    <h1>Play page</h1>
-    <Game></Game>
-  </div>
+  <AICards></AICards>
 </template>
 
 <script>
-import Game from '@/components/play/Game.vue';
+import AICards from '@/components/play/AICards.vue';
 
 export default {
   components: {
-    Game
+    AICards
   }
 }
 </script>

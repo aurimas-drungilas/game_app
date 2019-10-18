@@ -1,16 +1,15 @@
 <template lang="html">
   <div>
-    <h1>Play page</h1>
-    <Game></Game>
+    <PlayerCards></PlayerCards>
   </div>
 </template>
 
 <script>
-import Game from '@/components/play/Game.vue';
+import PlayerCards from '@/components/play/PlayerCards.vue';
 
 export default {
   components: {
-    Game
+    PlayerCards
   }
 }
 </script>

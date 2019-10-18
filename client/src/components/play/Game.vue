@@ -1,30 +1,23 @@
 <template lang="html">
   <div>
-    <!-- <AICards>
-      <BlankCard></BlankCard>
-    </AICards>
-    <GameCards>
-      <DrawPileCards></DrawPileCards>
-      <DiscardPileCards></DiscardPileCards>
-    </GameCards>
-    <PlayerCards>
-      <Card></Card>
-    </PlayerCards> -->
-    <UnoButton></UnoButton>
-    <p v-for="play in plays">{{play.name}}</p>
-    <button type="button" v-on:click="handleClick">Play</button>
+    <AIPlayer></AIPlayer>
+    <Computer></Computer>
+    <Player></Player>
   </div>
 </template>
 
 <script>
 // '@' allows to use root path of the 'src' folder.
-import PlayService from '@/services/PlayService.js'
-import UnoButton from '@/components/game/UnoButton.vue'
+import AIPlayer from '@/components/play/AIPlayer.vue';
+import Computer from '@/components/play/Computer.vue';
+import Player from '@/components/play/Player.vue';
+// import PlayService from '@/services/PlayService.js'
 import Game from '@/helpers/Game.js'
+import {eventBus} from '@/main.js';
 
 export default {
   components: {
-    UnoButton
+    AIPlayer, Computer, Player
   },
   data(){
     return {
@@ -38,7 +31,9 @@ export default {
     }
   },
   mounted() {
-    PlayService.getPlay().then(json => this.plays = json);
+    // PlayService.getPlay().then(json => this.plays = json);
+    eventBus.$on('player-card-picked', data => console.log(data));
+    // data: {colour: red, number: 8}
   },
   methods: {
     init() {
