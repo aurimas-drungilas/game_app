@@ -7,6 +7,8 @@ app.use(cors());
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+app.use(express.static('public'))
+
 const MongoClient = require('mongodb').MongoClient;
 const createRouter = require('./helpers/create_router.js');
 
@@ -16,9 +18,9 @@ MongoClient.connect(
 )
 .then((client) => {
   const db = client.db('game');
-  const unoCollection = db.collection('play');
-  const unoRouter = createRouter(unoCollection);
-  app.use('/api/play', unoRouter);
+  const cardsCollection = db.collection('Cards');
+  const cardsRouter = createRouter(cardsCollection);
+  app.use('/api/cards', cardsRouter);
 })
 .catch(console.err);
 
