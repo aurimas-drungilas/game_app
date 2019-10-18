@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <AIPlayer v-bind:cards="ai.cards"></AIPlayer>
+    <AIPlayer v-bind:cards="ai_player.cards"></AIPlayer>
     <Computer></Computer>
     <Player v-bind:cards="player.cards"></Player>
   </div>
@@ -23,7 +23,7 @@ export default {
       player: {
         cards: [],
       },
-      ai: {
+      ai_player: {
         cards: ['ai1', 'ai2', 'ai3'],
       },
     }
@@ -40,12 +40,16 @@ export default {
   methods: {
     init() { // Run only once when the game starts.
       this.assignPlayerCards(this.cards);
+      this.assignAIPlayerCards(this.cards);
     },
     update() { // Run after any action is performed.
 
     },
     assignPlayerCards(cards) {
       this.player.cards = cards;
+    },
+    assignAIPlayerCards(cards) {
+      this.ai_player.cards = cards;
     }
   },
   components: {
