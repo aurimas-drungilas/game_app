@@ -1,7 +1,7 @@
 <template lang="html">
-  <div>
+  <div v-on:click="handleClick">
     <p>Draw pile</p>
-    <img :src="lastCard">
+    <img :src="lastCard.back_url">
   </div>
 </template>
 
@@ -12,9 +12,14 @@ export default {
   props: ['cards'],
   computed: {
     lastCard() {
-      return this.cards[this.cards.length - 1].back_url;
-    }
-  }
+      return this.cards[this.cards.length - 1];
+    },
+  },
+  methods: {
+    handleClick() {
+      eventBus.$emit('draw-pile-clicked', this.lastCard);
+    },
+  },
 }
 </script>
 

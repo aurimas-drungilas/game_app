@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div v-on:click="handleClick">
     <!-- Player Card {{card}} -->
     <img :src="card.front_url">
   </div>
@@ -10,6 +10,11 @@ import {eventBus} from '@/main.js';
 
 export default {
   props: ['card'],
+  methods: {
+    handleClick() {
+      eventBus.$emit('player-card-clicked', this.card);
+    },
+  },
 }
 </script>
 

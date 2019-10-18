@@ -31,8 +31,12 @@ export default {
     }
   },
   mounted() {
-    // PlayService.getPlay().then(json => this.plays = json);
-    // eventBus.$on('player-card-picked', data => console.log(data));
+    // Set up the event buses
+    eventBus.$on('player-card-clicked', data => console.log(data));
+    eventBus.$on('ai-card-picked', data => console.log(data));
+    eventBus.$on('draw-pile-clicked', data => console.log(data));
+    eventBus.$on('aon-button-clicked', data => console.log(data));
+
     // Get all the cards and init the game.
     CardsService.get().then(json => {
       this.cards = json;
