@@ -97,7 +97,7 @@ export default {
       // Do the action.
       this.player.cards.push(card);
       // Remove from the draw pile.
-      // this.draw_pile.pop();
+      this.draw_pile.pop();
     },
   },
   components: {
