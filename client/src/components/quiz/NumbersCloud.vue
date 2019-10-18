@@ -17,10 +17,10 @@ export default {
   },
   methods: {
     doRandomisation(array) {
-      for (element in array) {
+      for (this.element in array) {
         array.sort(() => Math.random() - 0.5);
         return array;
-      }// data.shuffle();
+      }
     }
   }
 }
