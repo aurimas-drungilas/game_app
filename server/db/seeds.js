@@ -75,14 +75,14 @@ db.Cards.insertMany([
   {
     id: 20,
     colour: "red",
-    number: 1,
+    number: 0,
     front_url: 'http://localhost:3000/images/red10.png',
     back_url: 'http://localhost:3000/images/back.png',
   },
   {
     id: 21,
     colour: "red",
-    number: 0,
+    number: 1,
     front_url: 'http://localhost:3000/images/red1.png',
     back_url: 'http://localhost:3000/images/back.png',
   },
