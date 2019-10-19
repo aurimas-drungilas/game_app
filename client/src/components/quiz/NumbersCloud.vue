@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p v-for="number in numbers" :numbers="numbers">{{number}}</p>
+    <p v-for="number in numbers">{{number}}</p>
   </div>
 </template>
 

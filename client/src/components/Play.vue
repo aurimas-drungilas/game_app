@@ -1,7 +1,5 @@
 <template lang="html">
   <div>
-    <h1>Play page</h1>
-    <p>efejvjvf  cmekejrhgvnmckdelfnwlnelfnwjfnwlfnlfnw</p>
     <Game></Game>
   </div>
 </template>
