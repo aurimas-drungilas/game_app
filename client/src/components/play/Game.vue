@@ -12,7 +12,7 @@ import CardsService from '@/services/CardsService.js';
 import AIPlayer from '@/components/play/AIPlayer.vue';
 import Computer from '@/components/play/Computer.vue';
 import Player from '@/components/play/Player.vue';
-import GameHelper from '@/helpers/Game.js'
+import GameHelper from '@/helpers/Game.js';
 
 export default {
   data() {
