@@ -22,6 +22,9 @@ export default {
 div {
   display: inline-block;
 }
+div:hover {
+  cursor: pointer;
+}
 img {
   width: 100px;
 }
