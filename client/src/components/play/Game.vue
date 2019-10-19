@@ -1,5 +1,34 @@
 <template lang="html">
   <div>
+    <div class="help-side">
+      <button class="help-button" @click="help = !help">?</button><br>
+      <transition name="cheat">
+      <div v-if="help" class="help-list">
+        <p>If you need a little help:</p>
+        <p>1 – aon</p>
+        <p>2 – dhà</p>
+        <p>3 – trì</p>
+        <p>4 – ceithir</p>
+        <p>5 – còig</p>
+        <p>6 – sia</p>
+        <p>7 – seachd</p>
+        <p>8 – ochd</p>
+        <p>9 – naoi</p>
+        <p>10 – deich</p>
+      </div>
+    </transition>
+    </div>
+    <div class="info-side">
+      <button class="info-button" @click="info = !info">!</button><br>
+      <transition name="tips">
+      <div v-if="info" class="info-list">
+        <p>Useful tips for the game:</p>
+        <p>You can put down a card if its number / colour matches with the card's number / colour on the top of the Discard Pile.</p>
+        <p>If you can't put down anything, draw a card from the Draw Pile.</p>
+        <p>If you have only one card left don't forget to push the "AON" button or you will suffer!</p>
+      </div>
+    </transition>
+    </div>
     <AIPlayer v-bind:cards="ai_player.cards"></AIPlayer>
     <Computer v-bind:draw_pile="draw_pile" v-bind:discard_pile="discard_pile"></Computer>
     <Player v-bind:cards="player.cards" ></Player>
@@ -17,6 +46,8 @@ import GameHelper from '@/helpers/Game.js';
 export default {
   data() {
     return {
+      help: false,
+      info: false,
       setup: {
         startingCards: 7,
         aiThinkingTime: 1000, // milliseconds
@@ -235,4 +266,103 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+/* Help-side: */
+
+  .help-side {
+    position: absolute;
+    right: 40px;
+    top: 255px;
+    text-align: center;
+  }
+
+  .help-button {
+    position: absolute;
+    right: 90px;
+    top: -55px;
+    transition: 0.3s ease-in-out;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 12px;
+  }
+
+  .help-button:focus {
+    outline: 0;
+  }
+
+  .help-button:hover {
+    transform: scale(1.5);
+  }
+
+  .help-list {
+    padding: 5px;
+    border: 2px solid #264726;
+    margin: 10px;
+    font-size: 18px;
+  }
+
+  .cheat-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  .cheat-enter-active {
+    transition: all 1s;
+  }
+
+  .cheat-leave-to {
+    transition: all 1s;
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+/* Info-side: */
+
+.info-side {
+  position: absolute;
+  left: 50px;
+  top: 255px;
+  text-align: center;
+  width: 190px;
+}
+
+.info-button {
+  position: absolute;
+  left: 85px;
+  top: -55px;
+  transition: 0.3s ease-in-out;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 12px;
+}
+
+.info-button:focus {
+  outline: 0;
+}
+
+.info-button:hover {
+  transform: scale(1.5);
+}
+
+.info-list {
+  padding: 5px;
+  border: 2px solid #264726;
+  margin: 5px;
+  font-size: 18px;
+}
+
+.tips-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.tips-enter-active {
+  transition: all 1s;
+}
+
+.tips-leave-to {
+  transition: all 1s;
+  transform: translateY(30px);
+  opacity: 0;
+}
 </style>

@@ -50,6 +50,8 @@ export default {
 
 .nav-item:hover {
   transform: scale(1.5);
+  transition-duration: 0.5s;
+  letter-spacing: 7px;
   /* background-color: lightgrey; */
 }
 
