@@ -1,24 +1,25 @@
 <template lang="html">
   <div>
-    <ul class="nav nav-pills">
+    <ul class="nav-bar">
       <li>
-        <router-link to="/"  style="font-size: 35px; margin-left: 50px; margin-right: 50px;"><img id="logo" src="../assets/aon.png" alt="logo"></router-link>
+        <router-link to="/"><img id="logo" src="../assets/aon.png" alt="logo"></router-link>
       </li>
       <br>
-      <li class="nav-item">
-        <router-link class="nav-bar" to="/info" style="font-size: 35px; margin-left: 50px; margin-right: 50px;">About</router-link>
+      <li class="nav-item red">
+        <router-link to="/info">About</router-link>
       </li>
-      <li class="nav-item">
-        <router-link to="/quiz"  style="font-size: 35px; margin-left: 50px; margin-right: 50px;">Quiz</router-link>
+      <li class="nav-item yellow">
+        <router-link to="/quiz">Quiz</router-link>
       </li>
-      <li class="nav-item">
-        <router-link to="/learn"  style="font-size: 35px; margin-left: 50px; margin-right: 50px;">Learn</router-link>
+      <li class="nav-item blue">
+        <router-link to="/learn">Learn</router-link>
       </li>
-      <li class="nav-item">
-        <router-link to="/play"  style="font-size: 35px; margin-left: 50px; margin-right: 50px;">Play</router-link>
+      <li class="nav-item green">
+        <router-link to="/play">Play</router-link>
       </li>
-      <transition name="fade">
+      <transition name="fade" mode="out-in">
         <!-- <transition name="slide" mode="out-in"> -->
+        <!-- <transition name="test" mode="out-in"> -->
         <router-view/>
       </transition>
     </ul>
@@ -35,13 +36,24 @@ export default {
 
 .nav-item {
   transition: all .5s ease-in-out;
+  color: #264726;
+  font-size: 35px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 15px;
+  border-style: hidden;
 }
 
 .nav-item:hover {
   transform: scale(1.5);
+  /* background-color: lightgrey; */
 }
 
-ul {
+.nav-bar {
   list-style: none;
   display: inline-block;
 }
@@ -50,9 +62,32 @@ li {
   display: inline-block;
 }
 
-a {
+.nav-item > a:active {
+  color: #264726;
   text-decoration: none;
 }
+
+.nav-item > a:link {
+  color: #264726;
+  text-decoration: none;
+}
+
+.nav-item > a:visited {
+  color: #264726;
+  text-decoration: none;
+}
+
+/* .red > a:hover {
+  color: #af0606;
+}
+
+.yellow > a:hover {
+  color: #b2a000;
+}
+
+.blue > a:hover {
+  color: #060f89;
+} */
 
 #logo {
   position: relative;
@@ -67,33 +102,43 @@ a {
 
 .fade-enter-active, .fade-leave-active {
   transition-property: opacity;
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
 }
 
 .fade-enter-active {
-  transition-delay: 0.5s;
+  transition-delay: 0.3s;
 }
 
 .fade-enter, .fade-leave-active {
-  opacity: 0
+  opacity: 0;
 }
 
-.slide-enter-active,
+/* .slide-enter-active,
 .slide-leave-active
  {
-  transition: transform 1s ease-out;
+  transition: transform 1.2s ease-out;
 }
 .slide-enter {
-  transform: translateX(-40%);
+  transform: translateZ(-10%);
 }
 .slide-leave-to {
-  transform: translateX(80%);
+  transform: translateZ(10%);
+} */
+
+/* .test-enter-active, .test-leave-active {
+  transition-property: opacity;
+  transition-duration: 0.5s;
 }
 
-.test-enter-active, .test-enter {
-  transform: scale(1.5);
+.test-enter-active {
+  transition-delay: 0.2s;
 }
-.test-leave-active, .test-leave {
-  transform: scale(1);
+
+.test-enter {
+  opacity: 0;
 }
+
+.test-leave-active {
+  opacity: 0;
+} */
 </style>
