@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       setup: {
-        startingCards: 6,
+        startingCards: 7,
         aiThinkingTime: 1000, // milliseconds
         aonClickTime: 3000,
       },
@@ -105,7 +105,9 @@ export default {
 
       // Check for aon button click
       if (this.player.cards.length === 1) {
-        setTimeout
+        setTimeout(() => {
+
+        },this.setup.aonClickTime);
       }
     },
 
