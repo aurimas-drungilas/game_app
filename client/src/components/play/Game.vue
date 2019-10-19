@@ -18,7 +18,9 @@ export default {
   data() {
     return {
       setup: {
-        startingCards: 6,
+        startingCards: 7,
+        aiThinkingTime: 1000, // milliseconds
+        aonClickTime: 3000,
       },
       cards: [],
       player: {
@@ -73,17 +75,19 @@ export default {
         }
       } else if (this.state.turn === 'ai') {
         console.log("ai turn");
-        // Draw or pick?
-        if (this.shouldDiscard(this.ai_player.cards)) {
-          console.log("ai should discard");
-          this.state.action = 'discard';
-          this.playerCardClickedEvent(this.aiPickCard());
-        } else {
-          console.log("ai should draw");
-          this.state.action = 'draw';
-          this.aiDrawCard();
-          this.update();
-        }
+        setTimeout(() => {
+          // Draw or pick?
+          if (this.shouldDiscard(this.ai_player.cards)) {
+            console.log("ai should discard");
+            this.state.action = 'discard';
+            this.aiCardPickedEvent(this.aiPickCard());
+          } else {
+            console.log("ai should draw");
+            this.state.action = 'draw';
+            this.aiDrawCard();
+            this.update();
+          }
+        }, this.setup.aiThinkingTime);
       }
 
       // Check the win state
@@ -97,6 +101,13 @@ export default {
         } else {
           this.showLoseMessage();
         }
+      }
+
+      // Check for aon button click
+      if (this.player.cards.length === 1) {
+        setTimeout(() => {
+
+        },this.setup.aonClickTime);
       }
     },
 
@@ -183,7 +194,11 @@ export default {
           this.state.turn = 'ai';
           this.update();
         }
-      } else if (this.state.turn === 'ai' && this.state.action === 'discard') {
+      }
+    },
+
+    aiCardPickedEvent(card) {
+      if (this.state.turn === 'ai' && this.state.action === 'discard') {
         // Card matches the pile colour?
         if (this.canDiscard(card)) {
           // Add the clicked card to the discard pile.
