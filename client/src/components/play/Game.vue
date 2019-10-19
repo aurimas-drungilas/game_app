@@ -19,6 +19,7 @@ export default {
     return {
       setup: {
         startingCards: 6,
+        aiThinkingTime: 1000, // milliseconds
       },
       cards: [],
       player: {
@@ -73,17 +74,19 @@ export default {
         }
       } else if (this.state.turn === 'ai') {
         console.log("ai turn");
-        // Draw or pick?
-        if (this.shouldDiscard(this.ai_player.cards)) {
-          console.log("ai should discard");
-          this.state.action = 'discard';
-          this.aiCardPickedEvent(this.aiPickCard());
-        } else {
-          console.log("ai should draw");
-          this.state.action = 'draw';
-          this.aiDrawCard();
-          this.update();
-        }
+        setTimeout(() => {
+          // Draw or pick?
+          if (this.shouldDiscard(this.ai_player.cards)) {
+            console.log("ai should discard");
+            this.state.action = 'discard';
+            this.aiCardPickedEvent(this.aiPickCard());
+          } else {
+            console.log("ai should draw");
+            this.state.action = 'draw';
+            this.aiDrawCard();
+            this.update();
+          }
+        }, this.setup.aiThinkingTime);
       }
 
       // Check the win state
