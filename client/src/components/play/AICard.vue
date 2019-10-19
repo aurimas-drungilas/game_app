@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <img :src="card.front_url">
+    <img :src="card.back_url">
   </div>
 </template>
 
