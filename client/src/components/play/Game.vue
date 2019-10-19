@@ -77,12 +77,28 @@ export default {
         if (this.shouldDiscard(this.ai_player.cards)) {
           console.log("ai should discard");
           this.state.action = 'discard';
+          this.playerCardClickedEvent(this.aiPickCard());
         } else {
           console.log("ai should draw");
           this.state.action = 'draw';
+          this.aiDrawCard();
+          this.update();
         }
       }
-      // TODO: Check the win state
+      // TODO: Check the win state 
+    },
+
+    aiPickCard() {
+      const discardCard = this.discard_pile[this.discard_pile.length - 1];
+      const result = this.ai_player.cards.findIndex(card => {
+        return card.colour === discardCard.colour || card.number === discardCard.number;
+      });
+      return this.ai_player.cards[result];
+    },
+
+    aiDrawCard() {
+      const drawCard = this.draw_pile.pop();
+      this.ai_player.cards.push(drawCard);
     },
 
     shouldDiscard(yourCards) {
@@ -169,11 +185,12 @@ export default {
         // Remove from the draw pile.
         this.draw_pile.pop();
         this.update();
-      } else if (this.state.turn === 'ai' && this.state.action === 'draw') {
-        this.ai_player.cards.push(card);
-        this.draw_pile.pop();
-        this.update();
       }
+      // else if (this.state.turn === 'ai' && this.state.action === 'draw') {
+      //   this.ai_player.cards.push(card);
+      //   this.draw_pile.pop();
+      //   this.update();
+      // }
     },
   },
   components: {
