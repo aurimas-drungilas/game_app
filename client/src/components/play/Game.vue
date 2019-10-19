@@ -20,6 +20,7 @@ export default {
       setup: {
         startingCards: 6,
         aiThinkingTime: 1000, // milliseconds
+        aonClickTime: 3000,
       },
       cards: [],
       player: {
@@ -100,6 +101,11 @@ export default {
         } else {
           this.showLoseMessage();
         }
+      }
+
+      // Check for aon button click
+      if (this.player.cards.length === 1) {
+        setTimeout
       }
     },
 
