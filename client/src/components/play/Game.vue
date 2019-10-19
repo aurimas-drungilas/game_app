@@ -64,7 +64,7 @@ export default {
         // Draw card or use one?
         console.log("player turn");
         // Draw or pick?
-        if (this.shouldDiscard(this.discard_pile[this.discard_pile.length - 1], this.player.cards)) {
+        if (this.shouldDiscard(this.player.cards)) {
           console.log("player should discard");
           this.state.action = 'discard';
         } else {
@@ -74,7 +74,7 @@ export default {
       } else if (this.state.turn === 'ai') {
         console.log("ai turn");
         // Draw or pick?
-        if (this.shouldDiscard(this.discard_pile[this.discard_pile.length - 1], this.ai_player.cards)) {
+        if (this.shouldDiscard(this.ai_player.cards)) {
           console.log("ai should discard");
           this.state.action = 'discard';
         } else {
@@ -85,11 +85,17 @@ export default {
       // TODO: Check the win state
     },
 
-    shouldDiscard(discardCard, yourCards) {
+    shouldDiscard(yourCards) {
+      const discardCard = this.discard_pile[this.discard_pile.length - 1];
       const result = yourCards.findIndex(card => {
         return card.colour === discardCard.colour || card.number === discardCard.number;
       });
       return result != -1 ? true : false;
+    },
+
+    canDiscard(yourCard) {
+      const discardCard = this.discard_pile[this.discard_pile.length - 1];
+      return yourCard.colour === discardCard.colour || yourCard.number === discardCard.number;
     },
 
     assignPlayerCards(cards) {
@@ -130,23 +136,28 @@ export default {
 
     playerCardClickedEvent(card) {
       // Allowed action?
-      // TODO: Card matches the pile colour?
       if (this.state.turn === 'player' && this.state.action === 'discard') {
-        // Add the clicked card to the discard pile.
-        this.discard_pile.push(card);
-        // Remove from the player's cards.
-        this.player.cards.splice(GameHelper.getCardIndexInCards(card, this.player.cards), 1);
-        // Update the state
-        this.state.turn = 'ai';
-        this.update();
+        // Card matches the pile colour?
+        if (this.canDiscard(card)) {
+          // Add the clicked card to the discard pile.
+          this.discard_pile.push(card);
+          // Remove from the player's cards.
+          this.player.cards.splice(GameHelper.getCardIndexInCards(card, this.player.cards), 1);
+          // Update the state
+          this.state.turn = 'ai';
+          this.update();
+        }
       } else if (this.state.turn === 'ai' && this.state.action === 'discard') {
-        // Add the clicked card to the discard pile.
-        this.discard_pile.push(card);
-        // Remove from the player's cards.
-        this.ai_player.cards.splice(GameHelper.getCardIndexInCards(card, this.ai_player.cards), 1);
-        // Update the state
-        this.state.turn = 'player';
-        this.update();
+        // Card matches the pile colour?
+        if (this.canDiscard(card)) {
+          // Add the clicked card to the discard pile.
+          this.discard_pile.push(card);
+          // Remove from the player's cards.
+          this.ai_player.cards.splice(GameHelper.getCardIndexInCards(card, this.ai_player.cards), 1);
+          // Update the state
+          this.state.turn = 'player';
+          this.update();
+        }
       }
     },
 
