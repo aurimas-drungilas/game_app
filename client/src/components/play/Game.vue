@@ -82,6 +82,7 @@ export default {
           this.state.action = 'draw';
         }
       }
+      // TODO: Check the win state
     },
 
     shouldDiscard(discardCard, yourCards) {
@@ -137,6 +138,14 @@ export default {
         this.player.cards.splice(GameHelper.getCardIndexInCards(card, this.player.cards), 1);
         // Update the state
         this.state.turn = 'ai';
+        this.update();
+      } else if (this.state.turn === 'ai' && this.state.action === 'discard') {
+        // Add the clicked card to the discard pile.
+        this.discard_pile.push(card);
+        // Remove from the player's cards.
+        this.ai_player.cards.splice(GameHelper.getCardIndexInCards(card, this.ai_player.cards), 1);
+        // Update the state
+        this.state.turn = 'player';
         this.update();
       }
     },

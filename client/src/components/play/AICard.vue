@@ -1,6 +1,6 @@
 <template lang="html">
-  <div>
-    <img :src="card.back_url">
+  <div v-on:click="handleClick">
+    <img :src="card.front_url">
   </div>
 </template>
 
@@ -8,7 +8,12 @@
 import {eventBus} from '@/main.js';
 
 export default {
-  props: ['card']
+  props: ['card'],
+  methods: {
+    handleClick() {
+      eventBus.$emit('player-card-clicked', this.card);
+    },
+  },
 }
 </script>
 
