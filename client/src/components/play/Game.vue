@@ -77,7 +77,7 @@ export default {
         if (this.shouldDiscard(this.ai_player.cards)) {
           console.log("ai should discard");
           this.state.action = 'discard';
-          this.playerCardClickedEvent(this.aiPickCard());
+          this.aiCardPickedEvent(this.aiPickCard());
         } else {
           console.log("ai should draw");
           this.state.action = 'draw';
@@ -183,7 +183,11 @@ export default {
           this.state.turn = 'ai';
           this.update();
         }
-      } else if (this.state.turn === 'ai' && this.state.action === 'discard') {
+      }
+    },
+
+    aiCardPickedEvent(card) {
+      if (this.state.turn === 'ai' && this.state.action === 'discard') {
         // Card matches the pile colour?
         if (this.canDiscard(card)) {
           // Add the clicked card to the discard pile.
