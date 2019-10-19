@@ -82,7 +82,7 @@ db.Cards.insertMany([
   {
     id: 21,
     colour: "red",
-    number: 10,
+    number: 0,
     front_url: 'http://localhost:3000/images/red1.png',
     back_url: 'http://localhost:3000/images/back.png',
   },
@@ -145,7 +145,7 @@ db.Cards.insertMany([
   {
     id: 30,
     colour: "green",
-    number: 10,
+    number: 0,
     front_url: 'http://localhost:3000/images/green10.png',
     back_url: 'http://localhost:3000/images/back.png',
   },
@@ -215,7 +215,7 @@ db.Cards.insertMany([
   {
     id: 40,
     colour: "yellow",
-    number: 10,
+    number: 0,
     front_url: 'http://localhost:3000/images/yellow10.png',
     back_url: 'http://localhost:3000/images/back.png',
   },
