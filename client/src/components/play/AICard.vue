@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <img :src="card.back_url">
+    <img :src="card.front_url">
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import {eventBus} from '@/main.js';
 
 export default {
-  props: ['card']
+  props: ['card'],
 }
 </script>
 
