@@ -85,7 +85,27 @@ export default {
           this.update();
         }
       }
-      // TODO: Check the win state 
+
+      // Check the win state
+      if (this.player.cards.length <= 0) {
+        this.showWinMessage();
+      } else if (this.ai_player.cards.length <= 0) {
+        this.showLoseMessage();
+      } else if (this.draw_pile.length <= 0) {
+        if (this.player.cards.length <= this.ai_player.cards.length) {
+          this.showWinMessage();
+        } else {
+          this.showLoseMessage();
+        }
+      }
+    },
+
+    showWinMessage() {
+      alert("You have won!");
+    },
+
+    showLoseMessage() {
+      alert("You have lost :(");
     },
 
     aiPickCard() {
