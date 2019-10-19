@@ -88,9 +88,10 @@ export default {
     playerCardClickedEvent(card) {
       // Allowed action?
       // Card matches the pile colour?
-      // Do the action.
+      // Add the clicked card to the discard pile.
       this.discard_pile.push(card);
       // Remove from the player's cards.
+      this.player.cards.splice(GameHelper.getCardIndexInCards(card, this.cards), 1);
     },
     drawPileClickedEvent(card) {
       // Allowed action?

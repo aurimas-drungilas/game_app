@@ -12,4 +12,8 @@ export default {
     return cards;
   },
 
+  getCardIndexInCards(card, cards) {
+    return cards.findIndex(c => c._id === card._id);
+  }
+
 }
