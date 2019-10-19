@@ -91,7 +91,7 @@ export default {
       // Add the clicked card to the discard pile.
       this.discard_pile.push(card);
       // Remove from the player's cards.
-      this.player.cards.splice(GameHelper.getCardIndexInCards(card, this.cards), 1);
+      this.player.cards.splice(GameHelper.getCardIndexInCards(card, this.player.cards), 1);
     },
     drawPileClickedEvent(card) {
       // Allowed action?
