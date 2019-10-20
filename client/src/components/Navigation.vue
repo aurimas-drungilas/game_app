@@ -15,7 +15,7 @@
         <router-link to="/learn">Rules</router-link>
       </li>
       <li class="nav-item green">
-        <router-link to="/play">Play</router-link>
+        <router-link to="/play">Game</router-link>
       </li>
       <transition name="fade" mode="out-in">
         <!-- <transition name="slide" mode="out-in"> -->
@@ -35,14 +35,16 @@ export default {
 <style lang="css" scoped>
 
 .nav-item {
+  overflow: hidden;
+  display: inline-block;
   transition: all .5s ease-in-out;
   color: #264726;
   font-size: 35px;
   font-weight: bolder;
-  margin-left: 40px;
-  margin-right: 40px;
-  padding-left: 25px;
-  padding-right: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 70px;
+  padding-right: 70px;
   padding-top: 2px;
   padding-bottom: 2px;
   transform-style: preserve-3d;
@@ -54,7 +56,7 @@ export default {
   transition: all .4s;
   backface-visibility: hidden;
   transform: translateZ(0) scale(1.6) rotate(0.02deg);
-  letter-spacing: 7px;
+  letter-spacing: 9px;
 }
 
 .nav-bar {

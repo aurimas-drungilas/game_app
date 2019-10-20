@@ -207,53 +207,60 @@ export default {
 img {
   width: 120px;
   height: auto;
+  box-shadow: 7px 7px 5px grey;
 }
 
 .section1 {
+  font-size: 21px;
   padding: 15px;
   position: absolute;
-  width: 500px;
+  width: 400px;
   text-align: justify;
-  left: 50%;
+  left: 49%;
   top: 30%;
-  margin-top: 70px;
+  margin-top: 5px;
 }
 
 .section2 {
+  font-size: 21px;
   padding: 20px;
   position: absolute;
-  width: 500px;
+  width: 400px;
   text-align: justify;
-  left: 50%;
-  top: 60%;
+  left: 49%;
+  top: 55%;
+  margin-top: 20px;
 }
 
 .section3 {
+  font-size: 21px;
   padding: 20px;
   position: absolute;
-  width: 500px;
+  width: 400px;
   text-align: justify;
-  left: 15%;
-  top: 90%;
+  left: 20%;
+  top: 95%;
   padding-top: 30px;
 }
 
 .section4 {
+  font-size: 21px;
   padding: 20px;
   position: absolute;
-  width: 500px;
+  width: 400px;
   text-align: justify;
-  left: 15%;
-  top: 115%;
+  left: 20%;
+  top: 128%;
 }
 
 .section5 {
+  font-size: 21px;
   padding: 20px;
   position: absolute;
-  /* width: 500px; */
+  width: 830px;
   text-align: justify;
-  left: 15%;
-  top: 145%;
+  left: 20%;
+  top: 167%;
 }
 
 .learn-to-play {
@@ -262,9 +269,10 @@ img {
 
 .piles-img {
   position: absolute;
-  top: 103%;
-  left: 60%;
-  width: 300px;
+  top: 114%;
+  left: 55.5%;
+  width: 330px;
   height: auto;
+  box-shadow: 0 0 0;
 }
 </style>

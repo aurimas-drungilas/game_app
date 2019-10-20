@@ -1,10 +1,10 @@
 <template lang="html">
   <div class="home">
-  <h1>Welcome, welcome!</h1>
   <section class="welcome">
-    <h2>Are you a passionate card game player?</h2>
-    <h2>Are you excited about learning new languages?</h2>
-    <h2>If you do, this is the perfect place for you!</h2>
+    <p style="font-size: 52px;">Welcome, welcome!</p>
+    <p>Are you a passionate card game player?</p>
+    <p>Are you excited about learning new languages?</p>
+    <p>If you do, this is the perfect place for you!</p>
   </section>
   <section class="details">
     <p></p>
@@ -18,4 +18,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.welcome {
+  padding-top: 20px;
+  font-size: 40px;
+}
 </style>

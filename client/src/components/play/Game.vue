@@ -280,20 +280,26 @@ export default {
     position: absolute;
     right: 90px;
     top: -55px;
-    transition: 0.3s ease-in-out;
+    transition: 0.1s ease-in-out;
     padding: 10px;
     font-size: 20px;
     border-radius: 12px;
-    background-color: yellow;
+    background-color: lightgrey;
+    box-shadow: 3px 3px 2px grey;
   }
 
   .help-button:focus {
     outline: 0;
   }
 
+  .help-button:active {
+    box-shadow: 1px 1px 0.5px grey;
+    transform: translateY(4px);
+  }
+/*
   .help-button:hover {
     transform: scale(1.5);
-  }
+  } */
 
   .help-list {
     padding: 5px;
@@ -331,20 +337,26 @@ export default {
   position: absolute;
   left: 85px;
   top: -55px;
-  transition: 0.3s ease-in-out;
+  transition: 0.1s ease-in-out;
   padding: 10px;
   font-size: 20px;
   border-radius: 12px;
-  background-color: yellow;
+  background-color: lightgrey;
+  box-shadow: 3px 3px 2px grey;
 }
 
 .info-button:focus {
   outline: 0;
 }
 
-.info-button:hover {
-  transform: scale(1.5);
+.info-button:active {
+  box-shadow: 1px 1px 0.5px grey;
+  transform: translateY(4px);
 }
+
+/* .info-button:hover {
+  transform: scale(1.5);
+} */
 
 .info-list {
   padding: 5px;
