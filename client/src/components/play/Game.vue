@@ -268,17 +268,11 @@ export default {
     },
 
     allocateCards(cards) {
-      let playerCards = [];
-      let aiCards = [];
-      let drawPile = [];
-      let discardPile = [];
-      let length = cards.length;
-
-      // Split the cards around
-      playerCards = cards.splice(0, this.setup.startingCards);
-      aiCards = cards.splice(0, this.setup.startingCards);
-      discardPile = cards.splice(0, 1);
-      drawPile = cards;
+      // Split the cards
+      const playerCards = cards.splice(0, this.setup.startingCards);
+      const aiCards = cards.splice(0, this.setup.startingCards);
+      const discardPile = cards.splice(0, 1);
+      const drawPile = cards;
 
       // Assign appropriate cards to appropriate entities
       this.assignPlayerCards(playerCards);
