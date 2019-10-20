@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <div class="help-side">
-      <button class="help-button" @click="help = !help">?</button><br>
+      <button title="Would you like to cheat?" class="help-button" @click="help = !help">?</button><br>
       <transition name="cheat">
       <div v-if="help" class="help-list">
         <p>If you need a little help:</p>
@@ -19,7 +19,7 @@
     </transition>
     </div>
     <div class="info-side">
-      <button class="info-button" @click="info = !info">!</button><br>
+      <button title="Do you need a reminder about the rules?" class="info-button" @click="info = !info">!</button><br>
       <transition name="tips">
       <div v-if="info" class="info-list">
         <p>Useful tips for the game:</p>
@@ -284,6 +284,7 @@ export default {
     padding: 10px;
     font-size: 20px;
     border-radius: 12px;
+    background-color: yellow;
   }
 
   .help-button:focus {
@@ -334,6 +335,7 @@ export default {
   padding: 10px;
   font-size: 20px;
   border-radius: 12px;
+  background-color: yellow;
 }
 
 .info-button:focus {
