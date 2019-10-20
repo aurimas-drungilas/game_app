@@ -31,7 +31,7 @@ export default {
         10: 'deich'
       },
       answerInput: "",
-      isCorrect: false
+      isCorrect: null
     }
   },
   components: {
@@ -41,12 +41,14 @@ export default {
     trueOrFalse() {
       if (this.answerInput === this.gaelicNumbers.key) {
         this.isCorrect = true;
+      } else {
+        this.isCorrect = false;
       }
       return this.isCorrect;
     },
     checkAnswer() {
       if (this.answerInput === this.gaelicNumbers.key) {
-        this.trueOrFalse();
+        return this.trueOrFalse();
       }
     }
   }
