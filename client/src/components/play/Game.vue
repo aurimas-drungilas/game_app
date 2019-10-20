@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       setup: {
-        startingCards: 7,
+        startingCards: 2,
         updateTime: 300, // milliseconds
         aiThinkingTime: 1000, // milliseconds
         aonClickTime: 4000, // milliseconds
@@ -37,6 +37,7 @@ export default {
         action: '', // discard, draw
         aon: false,
         gameEnded: false,
+        gameWinner: '',
       },
     }
   },
@@ -91,9 +92,9 @@ export default {
       })
       // Handle game end
       .then(() => {
+        this.checkForGameEnd();
         if (this.getGameEnd() === true) {
-          // TODO: end the game
-          console.log("Game over");
+          alert(`${this.getWinner()} has won the game!`);
         } else {
           this.update();
         }
@@ -157,6 +158,10 @@ export default {
       return this.setup.aonClickTime;
     },
 
+    getWinner() {
+      return this.state.gameWinner;
+    },
+
     shouldAonBeTriggered() {
       if (this.player.cards.length === 1 && this.state.aon === false) {
         console.log("aon triggered");
@@ -203,14 +208,18 @@ export default {
     checkForGameEnd() {
       // Check the win state
       if (this.player.cards.length <= 0) {
-        this.showWinMessage();
+        this.state.gameEnded = true;
+        this.state.gameWinner = 'player';
       } else if (this.ai_player.cards.length <= 0) {
-        this.showLoseMessage();
+        this.state.gameEnded = true;
+        this.state.gameWinner = 'ai';
       } else if (this.draw_pile.length <= 0) {
         if (this.player.cards.length <= this.ai_player.cards.length) {
-          this.showWinMessage();
+          this.state.gameEnded = true;
+          this.state.gameWinner = 'player';
         } else {
-          this.showLoseMessage();
+          this.state.gameEnded = true;
+          this.state.gameWinner = 'ai';
         }
       }
     },
