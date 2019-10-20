@@ -3,6 +3,7 @@
     <h2>Test Your Gaelic numbers</h2>
     <numbers-cloud/>
     <numbers-test/>
+    <QuestionsA></QuestionsA>
   </div>
 </template>
 
@@ -11,12 +12,14 @@ import {eventBus} from '@/main.js'
 
 import NumbersCloud from '@/components/quiz/NumbersCloud.vue'
 import NumbersTest from '@/components/quiz/NumbersTest.vue'
+import QuestionsA from '@/components/quiz/QuestionsA.vue'
 
 export default {
   name: 'quiz',
   components: {
     'numbers-cloud': NumbersCloud,
-    'numbers-test': NumbersTest
+    'numbers-test': NumbersTest,
+    QuestionsA
   }
 }
 </script>
