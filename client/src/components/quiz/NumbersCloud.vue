@@ -9,7 +9,7 @@ export default {
   name: 'numbers-cloud',
   data() {
     return {
-      numbers: ['neoni', 'aon', 'dhà', 'trì', 'ceithir', 'còig', 'sia', 'seachd', 'ochd', 'naoi']
+      numbers: ['aon', 'dhà', 'trì', 'ceithir', 'còig', 'sia', 'seachd', 'ochd', 'naoi', 'deich']
     }
   },
   mounted() {

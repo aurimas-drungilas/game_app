@@ -1,9 +1,9 @@
 <template lang="html">
-  <p>dfsdf</p>
 </template>
 
 <script>
 export default {
+  name: 'individual-number'
 }
 </script>
 
