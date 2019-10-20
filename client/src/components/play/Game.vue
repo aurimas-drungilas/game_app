@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       setup: {
-        startingCards: 2,
+        startingCards: 7,
         updateTime: 300, // milliseconds
         aiThinkingTime: 1000, // milliseconds
         aonClickTime: 4000, // milliseconds
