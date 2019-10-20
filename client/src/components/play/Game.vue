@@ -19,8 +19,9 @@ export default {
     return {
       setup: {
         startingCards: 7,
+        updateTime: 300, // milliseconds
         aiThinkingTime: 1000, // milliseconds
-        aonClickTime: 3000,
+        aonClickTime: 3000, // milliseconds
       },
       cards: [],
       player: {
@@ -34,6 +35,7 @@ export default {
       state: {
         turn: 'player', // player, ai
         action: '', // discard, draw
+        gameEnded: false,
       },
     }
   },
@@ -60,7 +62,44 @@ export default {
       this.update();
     },
 
-    update() { // Run after any action is performed.
+    update() {
+      GameHelper.delay(this.getUpdateTime())
+      .then(() => console.log('<--------'))
+      // Handle turns
+      .then(() => {
+        if (this.getTurn() === 'player') {
+          this.updatePlayerGameState();
+        } else if (this.getTurn() === 'ai') {
+          return GameHelper.delay(this.getAIThinkingTime()).then(() => {
+            this.updateAIGameState();
+          });
+        }
+      })
+      // Handle game end
+      .then(() => {
+        if (this.getGameEnd() === true) {
+          // TODO: end the game
+        } else {
+          this.update();
+        }
+        console.log('-------->')
+      });
+    },
+
+    // update() { // Run after any action is performed.
+
+
+
+
+      // Check for aon button click
+      // if (this.player.cards.length === 1) {
+      //   setTimeout(() => {
+      //
+      //   },this.setup.aonClickTime);
+      // }
+    // },
+
+    updatePlayerGameState() {
       // Update the game state.
       if (this.state.turn === 'player') {
         // Draw card or use one?
@@ -73,23 +112,50 @@ export default {
           console.log("player should draw");
           this.state.action = 'draw';
         }
-      } else if (this.state.turn === 'ai') {
-        console.log("ai turn");
-        setTimeout(() => {
-          // Draw or pick?
-          if (this.shouldDiscard(this.ai_player.cards)) {
-            console.log("ai should discard");
-            this.state.action = 'discard';
-            this.aiCardPickedEvent(this.aiPickCard());
-          } else {
-            console.log("ai should draw");
-            this.state.action = 'draw';
-            this.aiDrawCard();
-            this.update();
-          }
-        }, this.setup.aiThinkingTime);
       }
+    },
 
+    updateAIGameState() {
+      if (this.state.turn === 'ai') {
+        console.log("ai turn");
+        // Draw or pick?
+        if (this.shouldDiscard(this.ai_player.cards)) {
+          console.log("ai should discard");
+          this.state.action = 'discard';
+          this.aiCardPickedEvent(this.aiPickCard());
+        } else {
+          console.log("ai should draw");
+          this.state.action = 'draw';
+          this.aiDrawCard();
+        }
+      }
+    },
+
+    getTurn() {
+      return this.state.turn;
+    },
+
+    getAction() {
+      return this.state.action;
+    },
+
+    getGameEnd() {
+      return this.state.gameEnded;
+    },
+
+    getUpdateTime() {
+      return this.setup.updateTime;
+    },
+
+    getAIThinkingTime() {
+      return this.setup.aiThinkingTime;
+    },
+
+    getAonClickTime() {
+      return this.setup.aonClickTime;
+    },
+
+    checkForGameEnd() {
       // Check the win state
       if (this.player.cards.length <= 0) {
         this.showWinMessage();
@@ -101,13 +167,6 @@ export default {
         } else {
           this.showLoseMessage();
         }
-      }
-
-      // Check for aon button click
-      if (this.player.cards.length === 1) {
-        setTimeout(() => {
-
-        },this.setup.aonClickTime);
       }
     },
 
@@ -130,6 +189,8 @@ export default {
     aiDrawCard() {
       const drawCard = this.draw_pile.pop();
       this.ai_player.cards.push(drawCard);
+      this.state.turn = 'player';
+      this.state.action = '';
     },
 
     shouldDiscard(yourCards) {
@@ -192,7 +253,6 @@ export default {
           this.player.cards.splice(GameHelper.getCardIndexInCards(card, this.player.cards), 1);
           // Update the state
           this.state.turn = 'ai';
-          this.update();
         }
       }
     },
@@ -207,7 +267,6 @@ export default {
           this.ai_player.cards.splice(GameHelper.getCardIndexInCards(card, this.ai_player.cards), 1);
           // Update the state
           this.state.turn = 'player';
-          this.update();
         }
       }
     },
@@ -219,13 +278,9 @@ export default {
         this.player.cards.push(card);
         // Remove from the draw pile.
         this.draw_pile.pop();
-        this.update();
+        this.state.turn = 'ai';
+        this.state.action = '';
       }
-      // else if (this.state.turn === 'ai' && this.state.action === 'draw') {
-      //   this.ai_player.cards.push(card);
-      //   this.draw_pile.pop();
-      //   this.update();
-      // }
     },
   },
   components: {
