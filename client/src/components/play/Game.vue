@@ -19,6 +19,7 @@ export default {
     return {
       setup: {
         startingCards: 7,
+        aonPenaltyCards: 2,
         updateTime: 300, // milliseconds
         aiThinkingTime: 1000, // milliseconds
         aonClickTime: 4000, // milliseconds
@@ -44,7 +45,6 @@ export default {
   mounted() {
     // Set up the event buses
     eventBus.$on('player-card-clicked', data => this.playerCardClickedEvent(data));
-    eventBus.$on('ai-card-picked', data => console.log(data));
     eventBus.$on('draw-pile-clicked', data => this.drawPileClickedEvent(data));
     eventBus.$on('aon-button-clicked', data => this.aonButtonClickedEvent());
 
@@ -60,7 +60,7 @@ export default {
       this.cards = GameHelper.shuffleCards(this.cards);
       // Allocate the cards
       this.allocateCards(this.cards);
-      // First update
+      // Kick start the machine
       this.update();
     },
 
@@ -71,7 +71,6 @@ export default {
       .then(() => {
         // console.log('Handle Aon click');
         if (this.shouldAonBeTriggered()) {
-          this.startAonExpectation();
           return GameHelper.delay(this.getAonClickTime()).then(() => {
             if (!this.isAonExpectationFulfilled()) {
               this.aonPenalise();
@@ -172,27 +171,26 @@ export default {
     },
 
     startAonExpectation() {
-      this.state.action = 'expecting-aon';
+      // this.state.action = 'expecting-aon';
       this.state.aon = false;
     },
 
     aonButtonClickedEvent() {
-      this.state.action = 'aon-fulfilled';
+      // this.state.action = 'aon-fulfilled';
       this.state.aon = true;
     },
 
     isAonExpectationFulfilled() {
-      if (this.state.action === 'aon-fulfilled') {
-        console.log('Aon expectation fulfilled');
+      if (this.state.aon === true) {
+        console.log('aon expectation fulfilled');
         return true;
       }
+      console.log('aon expectation not fulfilled');
       return false;
     },
 
     aonPenalise() {
-      console.log("adding {two} cards from draw pile");
-      // TODO: set up control of penalty cards.
-      [...Array(2)].map(() => {
+      [...Array(this.setup.aonPenaltyCards)].map(() => {
         if (this.discard_pile.length >= 1) {
           const card = this.draw_pile.pop()
           this.player.cards.push(card);
@@ -214,22 +212,17 @@ export default {
         this.state.gameEnded = true;
         this.state.gameWinner = 'ai';
       } else if (this.draw_pile.length <= 0) {
-        if (this.player.cards.length <= this.ai_player.cards.length) {
+        if (this.player.cards.length < this.ai_player.cards.length) {
           this.state.gameEnded = true;
           this.state.gameWinner = 'player';
-        } else {
+        } else if (this.player.cards.length > this.ai_player.cards.length) {
           this.state.gameEnded = true;
           this.state.gameWinner = 'ai';
+        } else {
+          this.state.gameEnded = true;
+          this.state.gameWinner = 'both players';
         }
       }
-    },
-
-    showWinMessage() {
-      alert("You have won!");
-    },
-
-    showLoseMessage() {
-      alert("You have lost :(");
     },
 
     aiPickCard() {
@@ -260,22 +253,6 @@ export default {
       return yourCard.colour === discardCard.colour || yourCard.number === discardCard.number;
     },
 
-    assignPlayerCards(cards) {
-      this.player.cards = cards;
-    },
-
-    assignAIPlayerCards(cards) {
-      this.ai_player.cards = cards;
-    },
-
-    assignDrawPileCards(cards) {
-      this.draw_pile = cards;
-    },
-
-    assignDiscardPileCards(cards) {
-      this.discard_pile = cards;
-    },
-
     allocateCards(cards) {
       // Split the cards
       const playerCards = cards.splice(0, this.setup.startingCards);
@@ -284,10 +261,10 @@ export default {
       const drawPile = cards;
 
       // Assign appropriate cards to appropriate entities
-      this.assignPlayerCards(playerCards);
-      this.assignAIPlayerCards(aiCards);
-      this.assignDrawPileCards(drawPile);
-      this.assignDiscardPileCards(discardPile);
+      this.player.cards = playerCards;
+      this.ai_player.cards = aiCards;
+      this.draw_pile = drawPile;
+      this.discard_pile = discardPile;
     },
 
     playerCardClickedEvent(card) {
@@ -302,6 +279,7 @@ export default {
           // Update the state
           if (this.shouldAonBeTriggered()) {
             this.state.turn = 'player';
+            this.startAonExpectation();
           } else {
             this.state.turn = 'ai';
             this.state.action = '';
