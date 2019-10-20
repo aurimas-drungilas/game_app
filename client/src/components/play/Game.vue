@@ -21,7 +21,7 @@ export default {
         startingCards: 7,
         updateTime: 300, // milliseconds
         aiThinkingTime: 1000, // milliseconds
-        aonClickTime: 3000, // milliseconds
+        aonClickTime: 4000, // milliseconds
       },
       cards: [],
       player: {
@@ -35,6 +35,7 @@ export default {
       state: {
         turn: 'player', // player, ai
         action: '', // discard, draw
+        aon: false,
         gameEnded: false,
       },
     }
@@ -44,7 +45,7 @@ export default {
     eventBus.$on('player-card-clicked', data => this.playerCardClickedEvent(data));
     eventBus.$on('ai-card-picked', data => console.log(data));
     eventBus.$on('draw-pile-clicked', data => this.drawPileClickedEvent(data));
-    eventBus.$on('aon-button-clicked', data => console.log(data));
+    eventBus.$on('aon-button-clicked', data => this.aonButtonClickedEvent());
 
     // Get all the cards and init the game.
     CardsService.get().then(json => {
@@ -65,6 +66,19 @@ export default {
     update() {
       GameHelper.delay(this.getUpdateTime())
       .then(() => console.log('<--------'))
+      // Handle Aon click
+      .then(() => {
+        // console.log('Handle Aon click');
+        if (this.shouldAonBeTriggered()) {
+          this.startAonExpectation();
+          return GameHelper.delay(this.getAonClickTime()).then(() => {
+            if (!this.isAonExpectationFulfilled()) {
+              this.aonPenalise();
+            }
+            this.resetAonExpectation();
+          });
+        }
+      })
       // Handle turns
       .then(() => {
         if (this.getTurn() === 'player') {
@@ -79,25 +93,13 @@ export default {
       .then(() => {
         if (this.getGameEnd() === true) {
           // TODO: end the game
+          console.log("Game over");
         } else {
           this.update();
         }
-        console.log('-------->')
-      });
+      })
+      .then(() => console.log('<--------'));
     },
-
-    // update() { // Run after any action is performed.
-
-
-
-
-      // Check for aon button click
-      // if (this.player.cards.length === 1) {
-      //   setTimeout(() => {
-      //
-      //   },this.setup.aonClickTime);
-      // }
-    // },
 
     updatePlayerGameState() {
       // Update the game state.
@@ -153,6 +155,49 @@ export default {
 
     getAonClickTime() {
       return this.setup.aonClickTime;
+    },
+
+    shouldAonBeTriggered() {
+      if (this.player.cards.length === 1 && this.state.aon === false) {
+        console.log("aon triggered");
+        return true;
+      } else {
+        return false;
+      }
+    },
+
+    startAonExpectation() {
+      this.state.action = 'expecting-aon';
+      this.state.aon = false;
+    },
+
+    aonButtonClickedEvent() {
+      this.state.action = 'aon-fulfilled';
+      this.state.aon = true;
+    },
+
+    isAonExpectationFulfilled() {
+      if (this.state.action === 'aon-fulfilled') {
+        console.log('Aon expectation fulfilled');
+        return true;
+      }
+      return false;
+    },
+
+    aonPenalise() {
+      console.log("adding {two} cards from draw pile");
+      // TODO: set up control of penalty cards.
+      [...Array(2)].map(() => {
+        if (this.discard_pile.length >= 1) {
+          const card = this.draw_pile.pop()
+          this.player.cards.push(card);
+        }
+      });
+    },
+
+    resetAonExpectation() {
+      this.state.turn = 'ai';
+      this.state.action = '';
     },
 
     checkForGameEnd() {
@@ -252,7 +297,12 @@ export default {
           // Remove from the player's cards.
           this.player.cards.splice(GameHelper.getCardIndexInCards(card, this.player.cards), 1);
           // Update the state
-          this.state.turn = 'ai';
+          if (this.shouldAonBeTriggered()) {
+            this.state.turn = 'player';
+          } else {
+            this.state.turn = 'ai';
+            this.state.action = '';
+          }
         }
       }
     },
@@ -278,8 +328,10 @@ export default {
         this.player.cards.push(card);
         // Remove from the draw pile.
         this.draw_pile.pop();
+        // Update the state.
         this.state.turn = 'ai';
         this.state.action = '';
+        this.state.aon = false;
       }
     },
   },
