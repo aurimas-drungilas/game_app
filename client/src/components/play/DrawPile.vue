@@ -24,6 +24,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
+div:hover {
+  cursor: pointer;
+}
 img {
   width: 100px;
 }

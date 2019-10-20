@@ -17,10 +17,8 @@ export default {
   },
   methods: {
     doRandomisation(array) {
-      for (this.element in array) {
-        array.sort(() => Math.random() - 0.5);
-        return array;
-      }
+      array.sort(() => Math.random() - 0.5);
+      return array;
     }
   }
 }

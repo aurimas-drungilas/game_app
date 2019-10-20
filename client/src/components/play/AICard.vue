@@ -8,7 +8,7 @@
 import {eventBus} from '@/main.js';
 
 export default {
-  props: ['card']
+  props: ['card'],
 }
 </script>
 

@@ -12,4 +12,17 @@ export default {
     return cards;
   },
 
+  getCardIndexInCards(card, cards) {
+    return cards.findIndex(c => c._id === card._id);
+  },
+
+  // Source: https://blog.praveen.science/right-way-of-delaying-execution-synchronously-in-javascript-without-using-loops-or-timeouts/
+  delay(milliseconds) {
+    return new Promise(done => {
+      setTimeout(() => {
+        done();
+      }, milliseconds);
+    });
+  }
+
 }
