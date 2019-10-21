@@ -51,6 +51,7 @@ export default {
       info: false,
       setup: {
         startingCards: 7,
+        cardPickAnimationDelay: 500, // milliseconds
         aonPenaltyCards: 2,
         updateTime: 300, // milliseconds
         aiThinkingTime: 1000, // milliseconds
@@ -292,6 +293,8 @@ export default {
       this.ai_player.cards.push(drawCard);
       this.state.turn = 'player';
       this.state.action = '';
+      // Emit the event
+      eventBus.$emit('ai-draw-picked', drawCard);
     },
 
     shouldDiscard(yourCards) {
@@ -352,6 +355,8 @@ export default {
           this.ai_player.cards.splice(GameHelper.getCardIndexInCards(card, this.ai_player.cards), 1);
           // Update the state
           this.state.turn = 'player';
+          // Emit the event
+          eventBus.$emit('ai-card-picked', card);
         }
       }
     },
@@ -367,6 +372,8 @@ export default {
         this.state.turn = 'ai';
         this.state.action = '';
         this.state.aon = false;
+        // Emit the event
+        eventBus.$emit('player-draw-picked', card);
       }
     },
   },

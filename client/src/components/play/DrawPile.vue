@@ -19,6 +19,18 @@ export default {
     handleClick() {
       eventBus.$emit('draw-pile-clicked', this.lastCard);
     },
+    handlePlayerDrawEvent(data) {
+      console.log("Player draw animation");
+      // TODO: Do Player draw animation
+    },
+    handleAIDrawEvent(data) {
+      console.log("AI draw animation");
+      // TODO: Do AI draw animation
+    },
+  },
+  mounted() {
+    eventBus.$on('player-draw-picked', data => this.handlePlayerDrawEvent(data));
+    eventBus.$on('ai-draw-picked', data => this.handleAIDrawEvent(data));
   },
 }
 </script>

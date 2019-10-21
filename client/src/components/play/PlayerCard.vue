@@ -14,6 +14,15 @@ export default {
     handleClick() {
       eventBus.$emit('player-card-clicked', this.card);
     },
+    handlePickAnimation(data) {
+      if (data._id === this.card._id) {
+        console.log("Do player card pick animation");
+        // TODO: set up card pick animation.
+      }
+    },
+  },
+  mounted() {
+    eventBus.$on('player-card-clicked', data => this.handlePickAnimation(data));
   },
 }
 </script>
