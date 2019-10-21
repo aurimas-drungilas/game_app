@@ -38,6 +38,7 @@
 <script>
 import {eventBus} from '@/main.js';
 import CardsService from '@/services/CardsService.js';
+import GameStatsService from '@/services/GameStatsService.js';
 import AIPlayer from '@/components/play/AIPlayer.vue';
 import Computer from '@/components/play/Computer.vue';
 import Player from '@/components/play/Player.vue';
@@ -70,7 +71,7 @@ export default {
         aon: false,
         gameEnded: false,
         gameWinner: '',
-      },
+      }
     }
   },
   mounted() {
@@ -254,6 +255,28 @@ export default {
           this.state.gameWinner = 'both players';
         }
       }
+    },
+
+    addPointToPlayer() {
+      // TODO: finish this function
+      GameStatsService.get().then((data) => {
+        data.player_wins += 1;
+        return GameStatsService.put(data);
+      }).then(() => {
+        this.redirectToGameStatsPage();
+      });
+    },
+
+    addPointToAI() {
+      // TODO
+    },
+
+    addPointToDraw() {
+      // TODO
+    },
+
+    redirectToGameStatsPage() {
+      this.$router.push('/game-stats');
     },
 
     aiPickCard() {
