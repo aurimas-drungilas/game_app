@@ -3,10 +3,10 @@
     <span v-if="showAux && correct">V</span> <!-- TODO: add emojis if possible -->
     <span v-if="showAux && !correct">X</span>
     <span>{{this.data.question}}</span>
-    <input type="text" v-model:change="input">
+    <input type="text" v-model:change="input" v-on:keyup.enter="handleCheckClick">
     <button type="button" v-on:click="handleCheckClick">Check</button>
     <!-- TODO: Read more on: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio -->
-    <audio v-if="correct" controls>
+    <audio v-if="correct" autoplay>
       <source :src="this.data.soundbiteUrl" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
