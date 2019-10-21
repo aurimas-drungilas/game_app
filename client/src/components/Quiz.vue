@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <h2>Test Your Gaelic numbers</h2>
+    <h2>Test Your Gaelic numbers!</h2>
     <numbers-cloud/>
     <numbers-test/>
     <QuestionsA></QuestionsA>
@@ -19,7 +19,7 @@ export default {
   components: {
     'numbers-cloud': NumbersCloud,
     'numbers-test': NumbersTest,
-    QuestionsA
+    QuestionsA,
   }
 }
 </script>
