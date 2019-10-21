@@ -1,6 +1,6 @@
 <template lang="html">
-  <div>
-    <img :src="card.back_url">
+  <div :class="{'slide-bottom': animate}">
+    <img :src="card.back_url" >
   </div>
 </template>
 
@@ -9,11 +9,17 @@ import {eventBus} from '@/main.js';
 
 export default {
   props: ['card'],
+  data(){
+    return {
+      animate: false,
+    }
+  },
   methods: {
     handlePickAnimation(data) {
       if (data._id === this.card._id) {
         console.log("Do AI card pick animation");
         // TODO: set up card pick animation.
+        this.animate = true;
       }
     },
   },
@@ -29,5 +35,32 @@ div {
 }
 img {
   width: 100px;
+}
+.slide-bottom {
+	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.4s, opacity 0.4s linear;
+}
+@-webkit-keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
+}
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
 }
 </style>

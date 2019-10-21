@@ -51,7 +51,7 @@ export default {
       info: false,
       setup: {
         startingCards: 7,
-        cardPickAnimationDelay: 500, // milliseconds
+        cardPickAnimationDelay: 300, // milliseconds
         aonPenaltyCards: 2,
         updateTime: 300, // milliseconds
         aiThinkingTime: 1000, // milliseconds
@@ -121,6 +121,9 @@ export default {
             this.updateAIGameState();
           });
         }
+      })
+      .then(() => {
+        return GameHelper.delay(this.getCardPickAnimationDelay());
       })
       // Handle game end
       .then(() => {
@@ -192,6 +195,10 @@ export default {
 
     getWinner() {
       return this.state.gameWinner;
+    },
+
+    getCardPickAnimationDelay() {
+      return this.setup.cardPickAnimationDelay;
     },
 
     shouldAonBeTriggered() {
@@ -332,7 +339,11 @@ export default {
           // Add the clicked card to the discard pile.
           this.discard_pile.push(card);
           // Remove from the player's cards.
-          this.player.cards.splice(GameHelper.getCardIndexInCards(card, this.player.cards), 1);
+          eventBus.$emit('player-card-picked', card);
+          GameHelper.delay(400).then(() => {
+            this.player.cards.splice(GameHelper.getCardIndexInCards(card, this.player.cards), 1);
+
+          });
           // Update the state
           if (this.shouldAonBeTriggered()) {
             this.state.turn = 'player';
@@ -352,7 +363,9 @@ export default {
           // Add the clicked card to the discard pile.
           this.discard_pile.push(card);
           // Remove from the player's cards.
-          this.ai_player.cards.splice(GameHelper.getCardIndexInCards(card, this.ai_player.cards), 1);
+          GameHelper.delay(400).then(() => {
+            this.ai_player.cards.splice(GameHelper.getCardIndexInCards(card, this.ai_player.cards), 1);
+          });
           // Update the state
           this.state.turn = 'player';
           // Emit the event
