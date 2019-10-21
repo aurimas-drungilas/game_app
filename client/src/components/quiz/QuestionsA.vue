@@ -23,7 +23,7 @@ export default {
         { question: 7, answers: ['seachd'], soundbiteUrl: 'http://localhost:3000/sounds/7.mp3'},
         { question: 8, answers: ['ochd'], soundbiteUrl: 'http://localhost:3000/sounds/8.mp3'},
         { question: 9, answers: ['naoi'], soundbiteUrl: 'http://localhost:3000/sounds/9.mp3'},
-        { question: 10, answers: ['deich'], soundbiteUrl: 'http://localhost:3000/sounds/10.ogg'},
+        { question: 10, answers: ['deich'], soundbiteUrl: 'http://localhost:3000/sounds/10.mp3'},
       ]
     }
   },
