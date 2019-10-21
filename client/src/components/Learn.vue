@@ -6,7 +6,7 @@
     </section>
     <section class="section2">
       <h1>Object of the game:</h1>
-      The object of AON is playing all the cards in your hand. When only one card is remaining, the cardholder must shout "Uno!" alerting others that he or she is down to the last card in his or her hand.
+      The object of AON is playing all the cards in your hand. When only one card is remaining, the cardholder must shout "Aon!" alerting others that he or she is down to the last card in his or her hand.
     </section>
     <section class="section3">
       <h1>How to start:</h1>

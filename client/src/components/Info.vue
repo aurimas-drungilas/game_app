@@ -16,18 +16,16 @@
   </section>
   <section class="text">
     <h1>About the project:</h1>
-    <p>Our main goal was to create a simple application, what you can use to learn a new language while having fun. It includes a quick quiz at the very beginning to make you prepared to play with our game. Right after the quiz you can have information about the rules of the game. Don't worry, they are really simple!</p>
+    <p>Our main goal was to create a simple application, what you can use to learn a few things about a new language while having fun. It includes a quick quiz at the very beginning to make you prepared to play with our game. Right after the quiz you can have information about the rules of the game. Don't worry, they are really simple!</p>
     <p>We highly recommend you to go through the navigation bar in order from left to right to have all the information you need to play an extremely enjoyable game.</p>
     <p>Of course, you can skip a few steps at any time, on the Game page you will find reminders about the rules and a little help for the language on both sides, if you don't exactly know what to do.</p>
     <p style="font-size: 27px; font-weight: bolder;">Thank you very much for using our application and please, enjoy your time!</p>
   </section>
 
 
-  <AppModal v-if="showModal" :showModal=showModal @clicked="onChildClick">
+  <AppModal v-if="showModal" :showModal=showModal @clicked="onChildClick" class="appmodal">
       <div slot="header">
-        <h3 class="modal-title">
-          Our team!
-        </h3>
+        <h1>Our team!</h1>
       </div>
       <div slot="body">
         <img class="team-img" src="../../public/team.jpg" alt="team image">
@@ -64,7 +62,7 @@ export default {
 <style lang="css" scoped>
 
   .team-img {
-    width: 400px;
+    width: 500px;
     height: auto;
   }
 
