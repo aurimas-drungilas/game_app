@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="table">
     <div class="help-side">
       <button title="Would you like to cheat?" class="help-button" @click="help = !help">?</button><br>
       <transition name="cheat">
@@ -29,9 +29,11 @@
       </div>
     </transition>
     </div>
+    <div class="play-field">
     <AIPlayer v-bind:cards="ai_player.cards"></AIPlayer>
     <Computer v-bind:draw_pile="draw_pile" v-bind:discard_pile="discard_pile"></Computer>
     <Player v-bind:cards="player.cards" ></Player>
+  </div>
   </div>
 </template>
 
@@ -355,19 +357,37 @@ export default {
 
 <style lang="css" scoped>
 
+/* table */
+
+  .play-field {
+    position: relative;
+    left: 18%;
+    width: 780px;
+  }
+
+  .table {
+    background-color: ivory;
+    border: 2px solid black;
+    width: 100%;
+    height: auto;
+    padding-bottom: 80px;
+    padding-top: 40px;
+    margin-top: 40px;
+  }
+
 /* Help-side: */
 
   .help-side {
     position: absolute;
-    right: 40px;
-    top: 255px;
+    right: 90px;
+    top: 320px;
     text-align: center;
   }
 
   .help-button {
     position: absolute;
-    right: 90px;
-    top: -55px;
+    right: 86px;
+    top: -50px;
     transition: 0.1s ease-in-out;
     padding: 10px;
     font-size: 20px;
@@ -415,16 +435,16 @@ export default {
 
 .info-side {
   position: absolute;
-  left: 50px;
-  top: 255px;
+  left: 140px;
+  top: 325px;
   text-align: center;
   width: 190px;
 }
 
 .info-button {
   position: absolute;
-  left: 85px;
-  top: -55px;
+  left: 80px;
+  top: -51px;
   transition: 0.1s ease-in-out;
   padding: 10px;
   font-size: 20px;

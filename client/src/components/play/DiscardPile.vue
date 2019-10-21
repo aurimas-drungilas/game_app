@@ -1,7 +1,7 @@
 <template lang="html">
-  <div>
+  <div class="discard-pile">
     <p>Discard Pile</p>
-    <img :src="lastCard" v-if="lastCard.length">
+    <img class="discard-card" :src="lastCard" v-if="lastCard.length">
   </div>
 </template>
 
@@ -19,7 +19,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
-img {
-  width: 100px;
+.discard-card {
+  width: 150px;
+  height: auto;
+  box-shadow: 6px 6px 5px grey;
+}
+
+.discard-pile {
+  position: relative;
+  left: 9.5%;
 }
 </style>

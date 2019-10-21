@@ -22,7 +22,7 @@
     <p style="font-size: 27px; font-weight: bolder;">Thank you very much for using our application and please, enjoy your time!</p>
   </section>
 
-
+  <transition name="test">
   <AppModal v-if="showModal" :showModal=showModal @clicked="onChildClick" class="appmodal">
       <div slot="header">
         <h1>Our team!</h1>
@@ -31,7 +31,7 @@
         <img class="team-img" src="../../public/team.jpg" alt="team image">
       </div>
     </AppModal>
-
+</transition>
 
 </div>
 </div>
@@ -60,6 +60,20 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+.test-enter-active, .test-leave-active {
+  transition-property: opacity;
+  transition-duration: 0.8s;
+}
+
+.test-enter-active {
+  transition-delay: 0.01s;
+}
+
+.test-enter, .test-leave-active {
+  opacity: 0;
+}
+
 
   .team-img {
     width: 500px;

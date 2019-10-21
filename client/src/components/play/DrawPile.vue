@@ -1,7 +1,7 @@
 <template lang="html">
-  <div v-on:click="handleClick">
+  <div v-on:click="handleClick" class="draw-pile">
     <p>Draw pile</p>
-    <img :src="lastCard.back_url">
+    <img class="draw-card" :src="lastCard.back_url">
   </div>
 </template>
 
@@ -24,10 +24,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
-div:hover {
+.draw-pile:hover {
   cursor: pointer;
 }
-img {
-  width: 100px;
+.draw-card {
+  position: relative;
+  left: 12%;
+  width: 150px;
+  height: auto;
+  box-shadow: 6px 6px 5px grey;
 }
 </style>

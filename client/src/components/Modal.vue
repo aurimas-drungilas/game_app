@@ -35,6 +35,7 @@
   width: 650px;
   max-width: 100%;
   height: auto;
+  border-radius: 25px;
   max-height: 100%;
   background: #FFFFFF;
   box-shadow: 2px 2px 20px 1px;

@@ -1,5 +1,5 @@
 <template lang="html">
-  <button type="button" v-on:click="handleClick">AON!</button>
+  <button class="aon-button" type="button" v-on:click="handleClick">AON!</button>
 </template>
 
 <script>
@@ -15,7 +15,27 @@ export default {
 </script>
 
 <style lang="css" scoped>
-button:hover {
+.aon-button {
+  position: relative;
+  right: -25%;
+  font-weight: bolder;
+  top: -87px;
+  transition: 0.1s ease-in-out;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 12px;
+  background-color: lightgrey;
+  box-shadow: 3px 3px 2px grey;
   cursor: pointer;
 }
+
+.aon-button:focus {
+  outline: 0;
+}
+
+.aon-button:active {
+  box-shadow: 1px 1px 0.5px grey;
+  transform: translateY(4px);
+}
+
 </style>

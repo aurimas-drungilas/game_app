@@ -55,8 +55,12 @@ export default {
   -webkit-font-smoothing: antialiased;
   transition: all .4s;
   backface-visibility: hidden;
-  transform: translateZ(0) scale(1.6) rotate(0.02deg);
+  transform:  scale(1.6);
   letter-spacing: 9px;
+  padding-left: -70px;
+  padding-right: -70px;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 
 .nav-bar {
