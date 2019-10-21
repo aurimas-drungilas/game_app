@@ -32,6 +32,14 @@ export default {
   left: 12%;
   width: 150px;
   height: auto;
-  box-shadow: 6px 6px 5px grey;
+  box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.6);
+}
+
+p {
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+  position: relative;
+  left: 20px;
 }
 </style>

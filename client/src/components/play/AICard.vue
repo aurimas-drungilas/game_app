@@ -21,7 +21,7 @@ div {
   height: auto;
   margin: 5px;
   /* transition: all .5s ease-in-out; */
-  box-shadow: 4px 4px 3px grey;
+  box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
 }
 
 /* .ai-card:hover {

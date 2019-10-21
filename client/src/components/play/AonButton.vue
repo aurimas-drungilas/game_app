@@ -25,7 +25,7 @@ export default {
   font-size: 15px;
   border-radius: 12px;
   background-color: lightgrey;
-  box-shadow: 3px 3px 2px grey;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.8);
   cursor: pointer;
 }
 

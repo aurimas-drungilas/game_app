@@ -88,6 +88,7 @@ export default {
     });
   },
   methods: {
+
     init() { // Run only once when the game starts.
       // Shuffle the cards
       this.cards = GameHelper.shuffleCards(this.cards);
@@ -366,13 +367,17 @@ export default {
   }
 
   .table {
+    background: url('../../../public/table.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
     background-color: ivory;
-    border: 2px solid black;
+    border: 2px solid ivory;
     width: 100%;
     height: auto;
     padding-bottom: 80px;
     padding-top: 40px;
     margin-top: 40px;
+    box-shadow: 10px 10px 8px grey;
   }
 
 /* Help-side: */
@@ -393,7 +398,7 @@ export default {
     font-size: 20px;
     border-radius: 12px;
     background-color: lightgrey;
-    box-shadow: 3px 3px 2px grey;
+    box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.8);
   }
 
   .help-button:focus {
@@ -401,7 +406,7 @@ export default {
   }
 
   .help-button:active {
-    box-shadow: 1px 1px 0.5px grey;
+    box-shadow: 1px 1px 0.5px black;
     transform: translateY(4px);
   }
 /*
@@ -410,6 +415,7 @@ export default {
   } */
 
   .help-list {
+    background-color: ghostwhite;
     padding: 5px;
     border: 2px solid #264726;
     margin: 10px;
@@ -450,7 +456,7 @@ export default {
   font-size: 20px;
   border-radius: 12px;
   background-color: lightgrey;
-  box-shadow: 3px 3px 2px grey;
+  box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.8);
 }
 
 .info-button:focus {
@@ -458,7 +464,7 @@ export default {
 }
 
 .info-button:active {
-  box-shadow: 1px 1px 0.5px grey;
+  box-shadow: 1px 1px 0.5px black;
   transform: translateY(4px);
 }
 
@@ -467,6 +473,7 @@ export default {
 } */
 
 .info-list {
+  background-color: ghostwhite;
   padding: 5px;
   border: 2px solid #264726;
   margin: 5px;
