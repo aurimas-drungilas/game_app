@@ -2,7 +2,7 @@
   <div>
     <ul class="nav-bar">
       <li>
-        <router-link to="/"><img id="logo" src="../assets/aon.png" alt="logo"></router-link>
+        <router-link to="/"><img title="Home page" id="logo" src="../assets/aon.png" alt="logo"></router-link>
       </li>
       <br>
       <li class="nav-item red">
@@ -12,10 +12,10 @@
         <router-link to="/quiz">Quiz</router-link>
       </li>
       <li class="nav-item blue">
-        <router-link to="/learn">Learn</router-link>
+        <router-link to="/learn">Rules</router-link>
       </li>
       <li class="nav-item green">
-        <router-link to="/play">Play</router-link>
+        <router-link to="/play">Game</router-link>
       </li>
       <transition name="fade" mode="out-in">
         <!-- <transition name="slide" mode="out-in"> -->
@@ -35,27 +35,34 @@ export default {
 <style lang="css" scoped>
 
 .nav-item {
+  overflow: hidden;
+  display: inline-block;
   transition: all .5s ease-in-out;
   color: #264726;
   font-size: 35px;
-  margin-left: 40px;
-  margin-right: 40px;
-  padding-left: 25px;
-  padding-right: 25px;
+  font-weight: bolder;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 70px;
+  padding-right: 70px;
   padding-top: 2px;
   padding-bottom: 2px;
-  border-radius: 15px;
-  border-style: hidden;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
 }
 
 .nav-item:hover {
-  transform: scale(1.5);
-  /* background-color: lightgrey; */
+  -webkit-font-smoothing: antialiased;
+  transition: all .4s;
+  backface-visibility: hidden;
+  transform: translateZ(0) scale(1.6) rotate(0.02deg);
+  letter-spacing: 9px;
 }
 
 .nav-bar {
   list-style: none;
   display: inline-block;
+  width: 1200px;
 }
 
 li {
