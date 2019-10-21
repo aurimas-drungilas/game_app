@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
-    <span v-if="showAux && correct">V</span> <!-- TODO: add emojis if possible -->
-    <span v-if="showAux && !correct">X</span>
+    <span v-if="showAux && correct">✅</span> <!-- TODO: add emojis if possible -->
+    <span v-if="showAux && !correct">❌</span>
     <span>{{this.data.question}}</span>
     <input type="text" v-model:change="input" v-on:keyup.enter="handleCheckClick">
     <button type="button" v-on:click="handleCheckClick">Check</button>
