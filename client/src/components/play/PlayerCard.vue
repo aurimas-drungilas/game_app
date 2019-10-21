@@ -22,7 +22,6 @@ export default {
     handlePickAnimation(data) {
       if (data._id === this.card._id) {
         console.log("Do player card pick animation");
-        // TODO: set up card pick animation.
         this.animate = true;
       }
     },

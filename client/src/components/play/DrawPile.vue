@@ -28,7 +28,6 @@ export default {
     },
     handlePlayerDrawEvent(data) {
       console.log("Player draw animation");
-      // TODO: Do Player draw animation
       this.animateBottom = true;
       setTimeout(() => {
         this.animateBottom = false;
@@ -36,7 +35,6 @@ export default {
     },
     handleAIDrawEvent(data) {
       console.log("AI draw animation");
-      // TODO: Do AI draw animation
       this.animateTop = true;
       setTimeout(() => {
         this.animateTop = false;
