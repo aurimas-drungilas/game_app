@@ -25,19 +25,22 @@ export default {
   methods: {
     handleClick() {
       eventBus.$emit('draw-pile-clicked', this.lastCard);
+    },
+    handlePlayerDrawEvent(data) {
+      console.log("Player draw animation");
+      // TODO: Do Player draw animation
       this.animateBottom = true;
       setTimeout(() => {
         this.animateBottom = false;
       }, 400);
     },
-    handlePlayerDrawEvent(data) {
-      console.log("Player draw animation");
-      // TODO: Do Player draw animation
-    },
     handleAIDrawEvent(data) {
       console.log("AI draw animation");
       // TODO: Do AI draw animation
       this.animateTop = true;
+      setTimeout(() => {
+        this.animateTop = false;
+      }, 400);
     },
   },
   mounted() {
