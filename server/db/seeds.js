@@ -283,3 +283,11 @@ db.Cards.insertMany([
     back_url: 'http://localhost:3000/images/back.png',
   },
 ]);
+
+db.GameStats.insertMany([
+  {
+    player_wins: 2,
+    ai_wins: 5,
+    draws: 2,
+  }
+]);

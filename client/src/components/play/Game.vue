@@ -40,6 +40,7 @@
 <script>
 import {eventBus} from '@/main.js';
 import CardsService from '@/services/CardsService.js';
+import GameStatsService from '@/services/GameStatsService.js';
 import AIPlayer from '@/components/play/AIPlayer.vue';
 import Computer from '@/components/play/Computer.vue';
 import Player from '@/components/play/Player.vue';
@@ -52,6 +53,7 @@ export default {
       info: false,
       setup: {
         startingCards: 7,
+        cardPickAnimationDelay: 300, // milliseconds
         aonPenaltyCards: 2,
         updateTime: 300, // milliseconds
         aiThinkingTime: 1000, // milliseconds
@@ -72,7 +74,7 @@ export default {
         aon: false,
         gameEnded: false,
         gameWinner: '',
-      },
+      }
     }
   },
   mounted() {
@@ -122,6 +124,9 @@ export default {
             this.updateAIGameState();
           });
         }
+      })
+      .then(() => {
+        return GameHelper.delay(this.getCardPickAnimationDelay());
       })
       // Handle game end
       .then(() => {
@@ -195,6 +200,10 @@ export default {
       return this.state.gameWinner;
     },
 
+    getCardPickAnimationDelay() {
+      return this.setup.cardPickAnimationDelay;
+    },
+
     shouldAonBeTriggered() {
       if (this.player.cards.length === 1 && this.state.aon === false) {
         console.log("aon triggered");
@@ -259,6 +268,28 @@ export default {
       }
     },
 
+    addPointToPlayer() {
+      // TODO: finish this function
+      GameStatsService.get().then((data) => {
+        data.player_wins += 1;
+        return GameStatsService.put(data);
+      }).then(() => {
+        this.redirectToGameStatsPage();
+      });
+    },
+
+    addPointToAI() {
+      // TODO
+    },
+
+    addPointToDraw() {
+      // TODO
+    },
+
+    redirectToGameStatsPage() {
+      this.$router.push('/game-stats');
+    },
+
     aiPickCard() {
       const discardCard = this.discard_pile[this.discard_pile.length - 1];
       const result = this.ai_player.cards.findIndex(card => {
@@ -272,6 +303,8 @@ export default {
       this.ai_player.cards.push(drawCard);
       this.state.turn = 'player';
       this.state.action = '';
+      // Emit the event
+      eventBus.$emit('ai-draw-picked', drawCard);
     },
 
     shouldDiscard(yourCards) {
@@ -309,7 +342,11 @@ export default {
           // Add the clicked card to the discard pile.
           this.discard_pile.push(card);
           // Remove from the player's cards.
-          this.player.cards.splice(GameHelper.getCardIndexInCards(card, this.player.cards), 1);
+          eventBus.$emit('player-card-picked', card);
+          GameHelper.delay(400).then(() => {
+            this.player.cards.splice(GameHelper.getCardIndexInCards(card, this.player.cards), 1);
+
+          });
           // Update the state
           if (this.shouldAonBeTriggered()) {
             this.state.turn = 'player';
@@ -329,9 +366,13 @@ export default {
           // Add the clicked card to the discard pile.
           this.discard_pile.push(card);
           // Remove from the player's cards.
-          this.ai_player.cards.splice(GameHelper.getCardIndexInCards(card, this.ai_player.cards), 1);
+          GameHelper.delay(400).then(() => {
+            this.ai_player.cards.splice(GameHelper.getCardIndexInCards(card, this.ai_player.cards), 1);
+          });
           // Update the state
           this.state.turn = 'player';
+          // Emit the event
+          eventBus.$emit('ai-card-picked', card);
         }
       }
     },
@@ -347,6 +388,8 @@ export default {
         this.state.turn = 'ai';
         this.state.action = '';
         this.state.aon = false;
+        // Emit the event
+        eventBus.$emit('player-draw-picked', card);
       }
     },
   },

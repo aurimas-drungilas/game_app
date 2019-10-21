@@ -5,6 +5,7 @@ import Info from '@/components/Info'
 import Learn from '@/components/Learn'
 import Play from '@/components/Play'
 import Quiz from '@/components/Quiz'
+import GameStats from '@/components/GameStats'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/play',
       name: 'Play',
       component: Play
+    },
+    {
+      path: '/game-stats',
+      name: 'Game Stats',
+      component: GameStats
     }
   ]
 })
