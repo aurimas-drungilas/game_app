@@ -20,12 +20,6 @@ div {
   width: 90px;
   height: auto;
   margin: 5px;
-  /* transition: all .5s ease-in-out; */
   box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.6);
 }
-
-/* .ai-card:hover {
-  box-shadow: 5px 5px 3px grey;
-  transform: scale(2);
-} */
 </style>
