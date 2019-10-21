@@ -24,11 +24,22 @@ export default {
   },
   props: ['data'],
   methods: {
+    playCorrectSound() {
+      const correctAudio = new Audio(this.data.soundbiteUrl);
+      correctAudio.play();
+    },
+    playWrongSound() {
+      const wrongAudio = new Audio('http://localhost:3000/sounds/fail.mp3');
+      wrongAudio.play();
+    },
     handleCheckClick() {
       if (this.data.answers.includes(this.input.toLowerCase())) {
         this.correct = true;
+        this.playCorrectSound();
       } else {
         this.correct = false;
+        this.playWrongSound();
+
       }
       this.showAux = true;
     }
