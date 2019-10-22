@@ -1,6 +1,5 @@
 <template lang="html">
   <div>
-    <h2>Click and hover over words to hear them</h2>
     <numbers-cloud/>
     <h2>Test Your Gaelic numbers!</h2>
     <numbers-test/>

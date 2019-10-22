@@ -25,6 +25,14 @@ MongoClient.connect(
   const gameStatsCollection = db.collection('GameStats');
   const gameStatsRouter = createRouter(gameStatsCollection);
   app.use('/api/game-stats', gameStatsRouter);
+
+  const quizCloudCollection = db.collection('QuizCloud');
+  const quizCloudRouter = createRouter(quizCloudCollection);
+  app.use('/api/quiz-cloud', quizCloudRouter);
+
+  const quizQuestionsCollection = db.collection('QuizQuestions');
+  const quizQuestionsRouter = createRouter(quizQuestionsCollection);
+  app.use('/api/quiz-questions', quizQuestionsRouter);
 })
 .catch(console.err);
 
