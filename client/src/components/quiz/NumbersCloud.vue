@@ -40,9 +40,9 @@ export default {
 
 <style lang="css" scoped>
 .cloud {
-  border: 2px solid black;
+  border: 2px solid lightgrey;
   background-color: ghostwhite;
-  border-radius: 20px;
+  border-radius: 40px;
   max-width: 400px;
   margin: 0 auto;
 }

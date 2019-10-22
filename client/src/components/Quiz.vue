@@ -32,13 +32,13 @@ export default {
 <style lang="css" scoped>
 .quiz-header {
   position: relative;
-  top: 70px;
+  top: 130px;
   left: -14.5%;
 }
 
 .test {
   position: absolute;
-  bottom: 23%;
+  bottom: 9%;
   left: 63%;
   width: 200px;
 }
