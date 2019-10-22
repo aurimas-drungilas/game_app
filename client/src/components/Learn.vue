@@ -26,7 +26,7 @@
     <div class="scene1">
       <div class="cards1">
         <div class="card1 front-face1">
-          <img src="http://localhost:3000/images/blue10.png" alt="front">
+          <img src="http://localhost:3000/images/blue1.png" alt="front">
         </div>
         <div class="card1 back-face1">
           <img src="http://localhost:3000/images/back.png" alt="back">
@@ -37,7 +37,7 @@
     <div class="scene2">
       <div class="cards2">
         <div class="card2 front-face2">
-          <img src="http://localhost:3000/images/green10.png" alt="front">
+          <img src="http://localhost:3000/images/green1.png" alt="front">
         </div>
         <div class="card2 back-face2">
           <img src="http://localhost:3000/images/back.png" alt="back">
@@ -48,7 +48,7 @@
     <div class="scene3">
       <div class="cards3">
         <div class="card3 front-face3">
-          <img src="http://localhost:3000/images/red10.png" alt="front">
+          <img src="http://localhost:3000/images/red1.png" alt="front">
         </div>
         <div class="card3 back-face3">
           <img src="http://localhost:3000/images/back.png" alt="back">
@@ -59,7 +59,7 @@
     <div class="scene4">
       <div class="cards4">
         <div class="card4 front-face4">
-          <img src="http://localhost:3000/images/yellow10.png" alt="front">
+          <img src="http://localhost:3000/images/yellow1.png" alt="front">
         </div>
         <div class="card4 back-face4">
           <img src="http://localhost:3000/images/back.png" alt="back">

@@ -57,10 +57,10 @@ export default {
   backface-visibility: hidden;
   transform:  scale(1.6);
   letter-spacing: 9px;
-  padding-left: -70px;
+  /* padding-left: -70px;
   padding-right: -70px;
   margin-left: -10px;
-  margin-right: -10px;
+  margin-right: -10px; */
 }
 
 .nav-bar {

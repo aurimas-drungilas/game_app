@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="numbers">
     <span v-if="showAuxiliary && isCorrect">✅</span>
     <span v-if="showAuxiliary && !isCorrect">❌</span>
     <span>{{this.questionsData.question}}</span>
@@ -45,4 +45,27 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.numbers {
+  margin: 5px;
+}
+
+button {
+  /* position: absolute;
+  right: 86px;
+  top: -50px; */
+  transition: 0.1s ease-in-out;
+  font-size: 13px;
+  border-radius: 12px;
+  background-color: ghostwhite;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.7);
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:active {
+  box-shadow: 1px 1px 0.5px black;
+  transform: translateY(4px);
+}
 </style>

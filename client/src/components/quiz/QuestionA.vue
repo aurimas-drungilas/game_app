@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="numbers">
     <span v-if="showAux && correct">✅</span> <!-- TODO: add emojis if possible -->
     <span v-if="showAux && !correct">❌</span>
     <span>{{this.data.question}}</span>

@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="questions">
     <QuestionA v-for="question in questions" :data="question"></QuestionA>
   </div>
 </template>
@@ -40,4 +40,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+/* .questions {
+  padding: 2px;
+} */
 </style>

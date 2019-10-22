@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="cloud">
     <CloudNumber v-for="banana in numbers" :item="banana"/>
   </div>
 </template>
@@ -39,7 +39,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
-div {
+.cloud {
+  border: 2px solid black;
+  background-color: ghostwhite;
+  border-radius: 20px;
   max-width: 400px;
   margin: 0 auto;
 }

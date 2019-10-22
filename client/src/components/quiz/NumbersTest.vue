@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="number-test">
     <individual-number v-for="question in questions" :questionsData="question"/>
   </div>
 </template>
