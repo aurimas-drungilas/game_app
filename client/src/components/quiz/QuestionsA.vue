@@ -1,14 +1,17 @@
 <template lang="html">
   <div>
-    <individual-number v-for="question in questions" :questionsData="question"/>
+    <QuestionA v-for="question in questions" :data="question"></QuestionA>
   </div>
 </template>
 
 <script>
-import IndividualNumber from '@/components/quiz/IndividualNumber.vue'
+import QuestionA from '@/components/quiz/QuestionA.vue';
 
 export default {
-  data(){
+  components: {
+    QuestionA
+  },
+  data() {
     return {
       questions: [
         { question: 1, answers: ['aon'], soundbiteUrl: 'http://localhost:3000/sounds/1.mp3'},
@@ -24,9 +27,15 @@ export default {
       ]
     }
   },
-  components: {
-    'individual-number': IndividualNumber
-  }
+  mounted() {
+    this.randomiseOrder();
+  },
+  methods: {
+    randomiseOrder(arr) {
+      // TODO: randomise the list if needed
+      return arr;
+    }
+  },
 }
 </script>
 
