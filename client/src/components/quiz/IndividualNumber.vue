@@ -1,9 +1,9 @@
 <template lang="html">
-  <div>
-    <span v-if="showAuxiliary && isCorrect">✅</span>
-    <span v-if="showAuxiliary && !isCorrect">❌</span>
+  <div class="numbers">
+    <span class="icon" v-if="showAuxiliary && isCorrect">✅</span>
+    <span class="icon" v-if="showAuxiliary && !isCorrect">❌</span>
     <span>{{this.questionsData.question}}</span>
-    <input type="text" size="10" v-model:change="input" v-on:keyup.enter="handleCheckClick">
+    <input class="input" type="text" size="10" v-model:change="input" v-on:keyup.enter="handleCheckClick">
     <button type="button" v-on:click="handleCheckClick">Check</button>
     <audio v-if="isCorrect" autoplay>
       <source :src="this.questionsData.soundbiteUrl" type="audio/mpeg">
@@ -45,4 +45,36 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.input {
+
+}
+
+.numbers {
+  margin: 9px;
+}
+
+.icon {
+  position: relative;
+  font-size: 10px
+}
+
+button {
+  /* position: absolute;
+  right: 86px;
+  top: -50px; */
+  transition: 0.1s ease-in-out;
+  font-size: 13px;
+  border-radius: 20px;
+  background-color: ghostwhite;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.7);
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:active {
+  box-shadow: 1px 1px 0.5px black;
+  transform: translateY(4px);
+}
 </style>

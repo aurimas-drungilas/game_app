@@ -1,8 +1,13 @@
 <template lang="html">
-  <div>
+<div>
+  <div class="quiz-header">
+    <h2>Click and hover over words to hear them</h2>
     <numbers-cloud/>
+  </div>
+    <div class="test">
     <h2>Test Your Gaelic numbers!</h2>
     <numbers-test/>
+  </div>
     <!-- <QuestionsA></QuestionsA> -->
   </div>
 </template>
@@ -25,4 +30,16 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.quiz-header {
+  position: relative;
+  top: 130px;
+  left: -14.5%;
+}
+
+.test {
+  position: absolute;
+  bottom: 20%;
+  left: 63%;
+  width: 200px;
+}
 </style>

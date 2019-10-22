@@ -3,8 +3,6 @@
 </template>
 
 <script>
-
-
 export default {
   props: ['item'],
   methods: {
@@ -17,9 +15,15 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+p {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 15px;
+}
 p:hover {
   cursor: pointer;
   background-color: white;
+  border: 1px solid lightgrey;
+  padding: 4px 19px;
 }
 </style>
