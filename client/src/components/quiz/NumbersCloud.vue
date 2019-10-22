@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <h2>Click and hover over words to hear them</h2>
-    <CloudNumber v-for="banana in numbers" :item="banana"/>
+    <CloudNumber class="cloud-number" v-for="banana in numbers" :item="banana"/>
   </div>
 </template>
 
@@ -38,5 +38,10 @@ export default {
 div {
   max-width: 400px;
   margin: 0 auto;
+}
+.cloud-number {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 15px;
 }
 </style>
