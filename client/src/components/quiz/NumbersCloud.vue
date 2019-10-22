@@ -6,25 +6,20 @@
 
 <script>
 import CloudNumber from '@/components/quiz/CloudNumber.vue'
+import QuizCloudService from '@/services/QuizCloudService.js'
 
 export default {
   data() {
     return {
-      numbers: [
-      {  word: 'aon', soundbiteUrl: 'http://localhost:3000/sounds/1.mp3'},
-      {  word: 'dhà', soundbiteUrl: 'http://localhost:3000/sounds/2.mp3'},
-      {  word: 'trì', soundbiteUrl: 'http://localhost:3000/sounds/3.mp3'},
-      {  word: 'ceithir', soundbiteUrl: 'http://localhost:3000/sounds/4.mp3'},
-      {  word: 'còig', soundbiteUrl: 'http://localhost:3000/sounds/5.mp3'},
-      {  word: 'sia', soundbiteUrl: 'http://localhost:3000/sounds/6.mp3'},
-      {  word: 'seachd', soundbiteUrl: 'http://localhost:3000/sounds/7.mp3'},
-      {  word: 'ochd', soundbiteUrl: 'http://localhost:3000/sounds/8.mp3'},
-      {  word: 'naoi', soundbiteUrl: 'http://localhost:3000/sounds/9.mp3'},
-      {  word: 'deich', soundbiteUrl: 'http://localhost:3000/sounds/10.mp3'},]
+      numbers: []
     }
   },
   mounted() {
-    this.doRandomisation(this.numbers);
+    QuizCloudService.get()
+    .then ((json) => {
+      this.numbers = json;
+      this.doRandomisation(this.numbers);
+    })
   },
   methods: {
     doRandomisation(array) {

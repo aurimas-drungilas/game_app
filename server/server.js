@@ -21,6 +21,14 @@ MongoClient.connect(
   const cardsCollection = db.collection('Cards');
   const cardsRouter = createRouter(cardsCollection);
   app.use('/api/cards', cardsRouter);
+
+  const quizCloudCollection = db.collection('QuizCloud');
+  const quizCloudRouter = createRouter(quizCloudCollection);
+  app.use('/api/quiz-cloud', quizCloudRouter);
+
+  const quizQuestionsCollection = db.collection('QuizQuestions');
+  const quizQuestionsRouter = createRouter(quizQuestionsCollection);
+  app.use('/api/quiz-questions', quizQuestionsRouter);
 })
 .catch(console.err);
 
