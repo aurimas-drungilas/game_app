@@ -56,7 +56,7 @@ img {
   width: 100px;
 }
 .animated-card {
-  position: relative;
+  position: absolute;
   margin-left: -49%;
 }
 .slide-bottom {
@@ -118,7 +118,7 @@ img {
 }
 .draw-card {
   position: relative;
-  left: 12%;
+  /* left: 12%; */
   width: 150px;
   height: auto;
   box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.6);
