@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p>Player cards</p>
+    <p>Your cards</p>
     <PlayerCards v-bind:cards="cards"></PlayerCards>
   </div>
 </template>
@@ -18,4 +18,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+p {
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+  position: relative;
+}
 </style>

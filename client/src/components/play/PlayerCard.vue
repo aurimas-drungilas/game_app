@@ -40,10 +40,10 @@ export default {
 
 .player-card:hover {
   overflow: hidden;
-  box-shadow: 0px 0px 0px grey;
-  transform: scale(1.9);
-  margin-left: 40px;
-  margin-right: 40px;
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 </style>

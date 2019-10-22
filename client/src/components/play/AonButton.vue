@@ -19,13 +19,13 @@ export default {
   position: relative;
   right: -25%;
   font-weight: bolder;
-  top: -87px;
+  top: -95px;
   transition: 0.1s ease-in-out;
   padding: 10px;
   font-size: 15px;
   border-radius: 12px;
   background-color: lightgrey;
-  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.7);
   cursor: pointer;
 }
 
