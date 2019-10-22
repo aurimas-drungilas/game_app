@@ -1,21 +1,13 @@
 <template lang="html">
-  <individual-number/>
-  <!-- <div>
-    <h3>Type in the corresponding Gaelic word: </h3>
-    <form>1 :
-      <input type="text" name="1" size="6"/>
-      <input type="submit" value="Check" @click="checkAnswer()"/>
-      <output name="1">{{trueOrFalse()}}</output>
-    </form>
-    <individual-number/>
-  <!-- </div> -->
+  <div>
+    <individual-number v-for="question in questions" :questionsData="question"/>
+  </div>
 </template>
 
 <script>
 import IndividualNumber from '@/components/quiz/IndividualNumber.vue'
 
 export default {
-  name: 'numbers-test',
   data(){
     return {
       questions: [
@@ -28,30 +20,12 @@ export default {
         { question: 7, answers: ['seachd'], soundbiteUrl: 'http://localhost:3000/sounds/7.mp3'},
         { question: 8, answers: ['ochd'], soundbiteUrl: 'http://localhost:3000/sounds/8.mp3'},
         { question: 9, answers: ['naoi'], soundbiteUrl: 'http://localhost:3000/sounds/9.mp3'},
-        { question: 10, answers: ['deich'], soundbiteUrl: 'http://localhost:3000/sounds/10.ogg'},
+        { question: 10, answers: ['deich'], soundbiteUrl: 'http://localhost:3000/sounds/10.mp3'},
       ]
     }
-    // answerInput: "",
-    // isCorrect: null
-
   },
   components: {
     'individual-number': IndividualNumber
-  },
-  methods: {
-    trueOrFalse() {
-      if (this.answerInput === this.gaelicNumbers.key) {
-        this.isCorrect = true;
-      } else {
-        this.isCorrect = false;
-      }
-      return this.isCorrect;
-    },
-    checkAnswer() {
-      if (this.answerInput === this.gaelicNumbers.key) {
-        return this.trueOrFalse();
-      }
-    }
   }
 }
 </script>
