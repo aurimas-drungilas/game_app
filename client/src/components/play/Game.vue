@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="table">
     <div class="help-side">
       <button title="Would you like to cheat?" class="help-button" @click="help = !help">?</button><br>
       <transition name="cheat">
@@ -29,9 +29,11 @@
       </div>
     </transition>
     </div>
+    <div class="play-field">
     <AIPlayer v-bind:cards="ai_player.cards"></AIPlayer>
     <Computer v-bind:draw_pile="draw_pile" v-bind:discard_pile="discard_pile"></Computer>
     <Player v-bind:cards="player.cards" ></Player>
+  </div>
   </div>
 </template>
 
@@ -88,6 +90,7 @@ export default {
     });
   },
   methods: {
+
     init() { // Run only once when the game starts.
       // Shuffle the cards
       this.cards = GameHelper.shuffleCards(this.cards);
@@ -398,25 +401,47 @@ export default {
 
 <style lang="css" scoped>
 
+/* table */
+
+  .play-field {
+    position: relative;
+    left: 18%;
+    width: 780px;
+  }
+
+  .table {
+    background: url('../../../public/table.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: ivory;
+    border: 2px solid ivory;
+    width: 100%;
+    height: auto;
+    padding-bottom: 80px;
+    padding-top: 40px;
+    margin-top: 40px;
+    box-shadow: 10px 10px 8px grey;
+  }
+
 /* Help-side: */
 
   .help-side {
     position: absolute;
-    right: 40px;
-    top: 255px;
+    right: 90px;
+    top: 320px;
     text-align: center;
   }
 
   .help-button {
     position: absolute;
-    right: 90px;
-    top: -55px;
+    right: 86px;
+    top: -50px;
     transition: 0.1s ease-in-out;
     padding: 10px;
     font-size: 20px;
     border-radius: 12px;
     background-color: lightgrey;
-    box-shadow: 3px 3px 2px grey;
+    box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.8);
   }
 
   .help-button:focus {
@@ -424,7 +449,7 @@ export default {
   }
 
   .help-button:active {
-    box-shadow: 1px 1px 0.5px grey;
+    box-shadow: 1px 1px 0.5px black;
     transform: translateY(4px);
   }
 /*
@@ -433,6 +458,7 @@ export default {
   } */
 
   .help-list {
+    background-color: ghostwhite;
     padding: 5px;
     border: 2px solid #264726;
     margin: 10px;
@@ -458,22 +484,22 @@ export default {
 
 .info-side {
   position: absolute;
-  left: 50px;
-  top: 255px;
+  left: 140px;
+  top: 325px;
   text-align: center;
   width: 190px;
 }
 
 .info-button {
   position: absolute;
-  left: 85px;
-  top: -55px;
+  left: 80px;
+  top: -51px;
   transition: 0.1s ease-in-out;
   padding: 10px;
   font-size: 20px;
   border-radius: 12px;
   background-color: lightgrey;
-  box-shadow: 3px 3px 2px grey;
+  box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.8);
 }
 
 .info-button:focus {
@@ -481,7 +507,7 @@ export default {
 }
 
 .info-button:active {
-  box-shadow: 1px 1px 0.5px grey;
+  box-shadow: 1px 1px 0.5px black;
   transform: translateY(4px);
 }
 
@@ -490,6 +516,7 @@ export default {
 } */
 
 .info-list {
+  background-color: ghostwhite;
   padding: 5px;
   border: 2px solid #264726;
   margin: 5px;

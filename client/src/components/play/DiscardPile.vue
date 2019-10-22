@@ -1,7 +1,7 @@
 <template lang="html">
-  <div>
+  <div class="discard-pile">
     <p>Discard Pile</p>
-    <img :src="lastCard" v-if="lastCard.length">
+    <img class="discard-card" :src="lastCard" v-if="lastCard.length">
   </div>
 </template>
 
@@ -14,12 +14,30 @@ export default {
     lastCard() {
       return this.cards[this.cards.length - 1].front_url;
     }
+  },
+  methods: {
+    allowToDrop(event) {
+      event.preventDefault();
+    }
   }
 }
 </script>
 
 <style lang="css" scoped>
-img {
-  width: 100px;
+.discard-card {
+  width: 150px;
+  height: auto;
+  box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.6);
+}
+
+.discard-pile {
+  position: relative;
+  left: 9.5%;
+}
+
+p {
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
 }
 </style>

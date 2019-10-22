@@ -6,9 +6,9 @@
     <p>Are you excited about learning new languages?</p>
     <p>If you do, this is the perfect place for you!</p>
   </section>
-  <section class="details">
+  <!-- <section class="details">
     <p></p>
-  </section>
+  </section> -->
 </div>
 </template>
 
