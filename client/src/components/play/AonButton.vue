@@ -17,7 +17,7 @@ export default {
 <style lang="css" scoped>
 .aon-button {
   position: relative;
-  right: -25%;
+  right: -7%;
   font-weight: bolder;
   top: -95px;
   transition: 0.1s ease-in-out;

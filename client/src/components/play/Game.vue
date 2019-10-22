@@ -3,31 +3,31 @@
     <div class="help-side">
       <button title="Would you like to cheat?" class="help-button" @click="help = !help">?</button><br>
       <transition name="cheat">
-      <div v-if="help" class="help-list">
-        <p>If you need a little help:</p>
-        <p>1 – aon</p>
-        <p>2 – dhà</p>
-        <p>3 – trì</p>
-        <p>4 – ceithir</p>
-        <p>5 – còig</p>
-        <p>6 – sia</p>
-        <p>7 – seachd</p>
-        <p>8 – ochd</p>
-        <p>9 – naoi</p>
-        <p>10 – deich</p>
-      </div>
-    </transition>
+        <div v-if="help" class="help-list">
+          <p>If you need a little help:</p>
+          <p>1 – aon</p>
+          <p>2 – dhà</p>
+          <p>3 – trì</p>
+          <p>4 – ceithir</p>
+          <p>5 – còig</p>
+          <p>6 – sia</p>
+          <p>7 – seachd</p>
+          <p>8 – ochd</p>
+          <p>9 – naoi</p>
+          <p>10 – deich</p>
+        </div>
+      </transition>
     </div>
     <div class="info-side">
       <button title="Do you need a reminder about the rules?" class="info-button" @click="info = !info">!</button><br>
       <transition name="tips">
-      <div v-if="info" class="info-list">
-        <p>Useful tips for the game:</p>
-        <p>You can put down a card if its number / colour matches with the card's number / colour on the top of the Discard Pile.</p>
-        <p>If you can't put down anything, draw a card from the Draw Pile.</p>
-        <p>If you have only one card left don't forget to push the "AON" button or you will suffer!</p>
-      </div>
-    </transition>
+        <div v-if="info" class="info-list">
+          <p>Useful tips for the game:</p>
+          <p>You can put down a card if its number / colour matches with the card's number / colour on the top of the Discard Pile.</p>
+          <p>If you can't put down anything, draw a card from the Draw Pile.</p>
+          <p>If you have only one card left don't forget to push the "AON" button or you will suffer!</p>
+        </div>
+      </transition>
     </div>
     <div class="play-field">
     <AIPlayer v-bind:cards="ai_player.cards"></AIPlayer>
@@ -512,7 +512,7 @@ export default {
 }
 
 /* .info-button:hover {
-  transform: scale(1.5);
+transform: scale(1.5);
 } */
 
 .info-list {

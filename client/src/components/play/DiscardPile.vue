@@ -32,7 +32,7 @@ export default {
 
 .discard-pile {
   position: relative;
-  left: 9.5%;
+  left: -3%;
 }
 
 p {
