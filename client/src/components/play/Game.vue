@@ -411,16 +411,16 @@ export default {
 
   .table {
     background: url('../../../public/table.png');
-    background-repeat: no-repeat;
+    background-repeat: repeat;
+    background-size: cover;
     background-size: 100%;
     background-color: ivory;
-    border: 2px solid ivory;
     width: 100%;
     height: auto;
     padding-bottom: 80px;
     padding-top: 40px;
     margin-top: 40px;
-    box-shadow: 10px 10px 8px grey;
+    box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.7);
   }
 
 /* Help-side: */
