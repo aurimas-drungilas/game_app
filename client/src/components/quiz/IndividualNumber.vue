@@ -51,6 +51,7 @@ export default {
 
 .numbers {
   margin: 9px;
+  min-width: 200px;
 }
 
 .icon {
