@@ -261,26 +261,31 @@ export default {
       if (this.player.cards.length <= 0) {
         this.state.gameEnded = true;
         this.state.gameWinner = 'player';
+        this.addPointToPlayer();
       } else if (this.ai_player.cards.length <= 0) {
         this.state.gameEnded = true;
         this.state.gameWinner = 'ai';
+        this.addPointToAI();
       } else if (this.draw_pile.length <= 0) {
         if (this.player.cards.length < this.ai_player.cards.length) {
           this.state.gameEnded = true;
           this.state.gameWinner = 'player';
+          this.addPointToPlayer();
         } else if (this.player.cards.length > this.ai_player.cards.length) {
           this.state.gameEnded = true;
           this.state.gameWinner = 'ai';
+          this.addPointToAI();
         } else {
           this.state.gameEnded = true;
           this.state.gameWinner = 'both players';
+          this.addPointToDraw();
         }
       }
     },
 
     addPointToPlayer() {
-      // TODO: finish this function
       GameStatsService.get().then((data) => {
+        data = data[0];
         data.player_wins += 1;
         return GameStatsService.put(data);
       }).then(() => {
@@ -289,11 +294,23 @@ export default {
     },
 
     addPointToAI() {
-      // TODO
+      GameStatsService.get().then((data) => {
+        data = data[0];
+        data.ai_wins += 1;
+        return GameStatsService.put(data);
+      }).then(() => {
+        this.redirectToGameStatsPage();
+      });
     },
 
     addPointToDraw() {
-      // TODO
+      GameStatsService.get().then((data) => {
+        data = data[0];
+        data.draws += 1;
+        return GameStatsService.put(data);
+      }).then(() => {
+        this.redirectToGameStatsPage();
+      });
     },
 
     redirectToGameStatsPage() {
