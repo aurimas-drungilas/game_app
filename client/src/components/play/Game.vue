@@ -260,24 +260,24 @@ export default {
       // Check the win state
       if (this.player.cards.length <= 0) {
         this.state.gameEnded = true;
-        this.state.gameWinner = 'player';
+        this.state.gameWinner = 'Player';
         this.addPointToPlayer();
       } else if (this.ai_player.cards.length <= 0) {
         this.state.gameEnded = true;
-        this.state.gameWinner = 'ai';
+        this.state.gameWinner = 'Computer';
         this.addPointToAI();
       } else if (this.draw_pile.length <= 0) {
         if (this.player.cards.length < this.ai_player.cards.length) {
           this.state.gameEnded = true;
-          this.state.gameWinner = 'player';
+          this.state.gameWinner = 'Player';
           this.addPointToPlayer();
         } else if (this.player.cards.length > this.ai_player.cards.length) {
           this.state.gameEnded = true;
-          this.state.gameWinner = 'ai';
+          this.state.gameWinner = 'Computer';
           this.addPointToAI();
         } else {
           this.state.gameEnded = true;
-          this.state.gameWinner = 'both players';
+          this.state.gameWinner = 'No one';
           this.addPointToDraw();
         }
       }
