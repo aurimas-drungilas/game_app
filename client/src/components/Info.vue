@@ -55,7 +55,7 @@ export default {
     onChildClick () {
       this.showModal = false;
     }
-  },
+  }
 }
 </script>
 
@@ -67,7 +67,7 @@ export default {
 }
 
 .test-enter-active {
-  transition-delay: 0.01s;
+  transition-delay: 0s;
 }
 
 .test-enter, .test-leave-active {
@@ -94,6 +94,7 @@ export default {
     list-style: none;
     display: block;
     font-size: 21px;
+      min-height: 65px;
   }
 
   .text {

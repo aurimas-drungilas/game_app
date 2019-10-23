@@ -207,7 +207,7 @@ export default {
 img {
   width: 120px;
   height: auto;
-  box-shadow: 7px 7px 5px grey;
+  box-shadow: 5px 5px 2px black;
 }
 
 .section1 {
