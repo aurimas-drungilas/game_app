@@ -5,7 +5,7 @@
       <transition name="cheat">
         <div v-if="help" class="help-list">
           <p>If you need a little help:</p>
-          <p>1 – aon</p>
+          <!-- <p>1 – aon</p>
           <p>2 – dhà</p>
           <p>3 – trì</p>
           <p>4 – ceithir</p>
@@ -14,7 +14,8 @@
           <p>7 – seachd</p>
           <p>8 – ochd</p>
           <p>9 – naoi</p>
-          <p>10 – deich</p>
+          <p>10 – deich</p> -->
+          <NumbersHelp v-for="banana in numbers" :item="banana"/>
         </div>
       </transition>
     </div>
@@ -45,6 +46,10 @@ import AIPlayer from '@/components/play/AIPlayer.vue';
 import Computer from '@/components/play/Computer.vue';
 import Player from '@/components/play/Player.vue';
 import GameHelper from '@/helpers/Game.js';
+import NumbersHelp from '@/components/play/NumbersHelp.vue'
+import QuizQuestionsService from '@/services/QuizQuestionsService.js'
+
+
 
 export default {
   data() {
@@ -74,7 +79,8 @@ export default {
         aon: false,
         gameEnded: false,
         gameWinner: '',
-      }
+      },
+      numbers: []
     }
   },
   mounted() {
@@ -88,6 +94,10 @@ export default {
       this.cards = json;
       this.init();
     });
+    QuizQuestionsService.get()
+    .then ((json) => {
+      this.numbers = json;
+    })
   },
   methods: {
 
@@ -251,26 +261,31 @@ export default {
       if (this.player.cards.length <= 0) {
         this.state.gameEnded = true;
         this.state.gameWinner = 'player';
+        this.addPointToPlayer();
       } else if (this.ai_player.cards.length <= 0) {
         this.state.gameEnded = true;
         this.state.gameWinner = 'ai';
+        this.addPointToAI();
       } else if (this.draw_pile.length <= 0) {
         if (this.player.cards.length < this.ai_player.cards.length) {
           this.state.gameEnded = true;
           this.state.gameWinner = 'player';
+          this.addPointToPlayer();
         } else if (this.player.cards.length > this.ai_player.cards.length) {
           this.state.gameEnded = true;
           this.state.gameWinner = 'ai';
+          this.addPointToAI();
         } else {
           this.state.gameEnded = true;
           this.state.gameWinner = 'both players';
+          this.addPointToDraw();
         }
       }
     },
 
     addPointToPlayer() {
-      // TODO: finish this function
       GameStatsService.get().then((data) => {
+        data = data[0];
         data.player_wins += 1;
         return GameStatsService.put(data);
       }).then(() => {
@@ -279,11 +294,23 @@ export default {
     },
 
     addPointToAI() {
-      // TODO
+      GameStatsService.get().then((data) => {
+        data = data[0];
+        data.ai_wins += 1;
+        return GameStatsService.put(data);
+      }).then(() => {
+        this.redirectToGameStatsPage();
+      });
     },
 
     addPointToDraw() {
-      // TODO
+      GameStatsService.get().then((data) => {
+        data = data[0];
+        data.draws += 1;
+        return GameStatsService.put(data);
+      }).then(() => {
+        this.redirectToGameStatsPage();
+      });
     },
 
     redirectToGameStatsPage() {
@@ -394,7 +421,7 @@ export default {
     },
   },
   components: {
-    AIPlayer, Computer, Player
+    AIPlayer, Computer, Player, NumbersHelp
   },
 }
 </script>
