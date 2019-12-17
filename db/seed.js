@@ -286,9 +286,9 @@ db.Cards.insertMany([
 
 db.GameStats.insertMany([
   {
-    player_wins: 2,
-    ai_wins: 5,
-    draws: 2,
+    player_wins: 0,
+    ai_wins: 0,
+    draws: 0,
   }
 ]);
 

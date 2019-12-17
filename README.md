@@ -1,22 +1,15 @@
-# Educational Game App
+# Educational game app
 
-## Setup
+This app was developed as a CodeClan group (3 people) project. Please read [brief](./BRIEF.md) and [guidelines](./GUIDELINES.md) for more information.
 
-### Database
+Learn gaelic numbers by taking a quiz and playing a game.
 
-1. `mongod` to run the MongoDB server.
-2. Open a new terminal `Cmd+T`.
-3. `cd server` to go into the server directory.
-4. `npm run seeds` to populate the database with initial data. Can also be used to reset the data in the database.
+## How to start
 
-### Server
+You need [Docker](https://www.docker.com/get-started) installed in your system.
 
-1. `cd server` to go to the server directory if not already in it.
-2. `sudo npm install` to install all of the required npm packages.  
-3. `npm run server:dev` to start the server in development mode.
+1. Run `docker-compose build` to build the application and `docker-compose up -d` to start.
 
-### Client
+2. Open [http://localhost:8080](http://localhost:8080).
 
-1. `cd client` to go to the client directory.
-2. `sudo npm install` to install all of the required npm packages.  
-3. `sudo npm dev` to run the client server.
+3. `docker-compose stop` to stop the application or `docker-compose down` to remove.
