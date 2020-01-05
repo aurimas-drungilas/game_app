@@ -13,7 +13,7 @@ const MongoClient = require('mongodb').MongoClient;
 const createRouter = require('./helpers/create_router.js');
 
 MongoClient.connect(
-  'mongodb://root:password@db:27017',
+  'mongodb://root:password@db/game',
   { useNewUrlParser: true, useUnifiedTopology: true }
 )
 .then((client) => {
